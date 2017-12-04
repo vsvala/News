@@ -11,7 +11,7 @@ public class AliveApplication {
     }
 
     public static String githubUrl() {
-        return "https://github.com/vsvala/Wepa-s17";
+        return "https://github.com/vsvala/News";
     }
 
     public static String travisUrl() {
