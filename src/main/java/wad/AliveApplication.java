@@ -15,11 +15,11 @@ public class AliveApplication {
     }
 
     public static String travisUrl() {
-        return "https://travis-ci.org/vsvala/Wepa-s17";
+        return "https://travis-ci.org/vsvala/News";
      
     }
 
     public static String herokuUrl() {
-        return "http://alive-wepa17.herokuapp.com/";
+        return "http://uutisprojekti.herokuapp.com/";
     }
 }
