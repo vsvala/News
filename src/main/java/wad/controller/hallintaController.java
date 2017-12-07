@@ -9,26 +9,47 @@ import org.springframework.web.bind.annotation.RequestParam;
 import wad.domain.Uutinen;
 import wad.repository.UutinenRepository;
 
-
 @Controller
 public class hallintaController {
 
+//    @Autowired
+//    private UutinenService uutinenService;
+//    
     @Autowired
     private UutinenRepository uutinenRepository;
 
     @GetMapping("/")
     public String list(Model model) {
-        model.addAttribute("uutiset", uutinenRepository.findAll());
+       model.addAttribute("uutiset", uutinenRepository.findAll());
+       // model.addAttribute("uutiset", uutinenService.list());
         return "index";
     }
 
+//    @PostMapping("/")
+//    public String create(@RequestParam String name){
+//        Uutinen eka = new Uutinen();
+//        eka.setName(name);
+//        eka.getName();
+//        eka.setIngressi(ingressi);
+//        eka.getIngressi();
+//        uutinenRepository.save(eka);
+//        return "redirect:/";
+//    }
     @PostMapping("/")
-    public String create(@RequestParam String name) {
-        Uutinen eka = new Uutinen(name);
+    public String createUutinen(@RequestParam String name,String ingressi, String sisalto, Integer time, String kirjoittajat, String kategoria) {
+       // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria);
+        Uutinen eka = new Uutinen();
+        eka.setName(name);
+        eka.setIngressi(ingressi);
+        eka.setSisalto(sisalto);
+        eka.setJulkaisuaika(time);
+        eka.setKirjoittajat(kirjoittajat);
+        eka.setKategoria(kategoria);
         uutinenRepository.save(eka);
-        return "redirect:/";
+
+        return  "redirect:/uutinen";                   //"redirect:/";samalle sivulle
     }
-    
+
 //        
 //    @GetMapping("/uutinen")
 //    public String listaauutinen(Model model) {
@@ -36,7 +57,6 @@ public class hallintaController {
 ////        model.addAttribute("items", itemRepository.findAll());
 //        return "uutinen";
 //    }
-
 //    @PostMapping("/uutinen")
 //    public String createuutinen(@RequestParam String head, String name) {
 //        Uutinen ekauutinen = new Uutinen(head);

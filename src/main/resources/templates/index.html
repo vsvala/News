@@ -4,13 +4,18 @@
         <meta charset="UTF-8" />
         <title>Hallinta</title>
     </head>
-    <body>
+    <body style="background-color:darkseagreen">
+        
+               <div>
+            <ul>
+               <a  th:href="@{/uutinen}"> UUTISTEN LISÄYS<li style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
+              font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}" th:text="${uutinen.kategoria}"  ></li></a>
+         
+            </ul>
+        </div>
+       
 
-        <h2>Hallintapaneeli</h2>
-
-        <div><a href="/uutinen">Uutisten listaaminen</a></div>
-        <div><a href="/uutissivusto">Uutinen</a></div>
-
+     
         <h2>Lisää uutinen</h2>
         <p>
             Kirjoita otsikko, ingressi, uutisen sisältö ja paina Lisää:<br/>  
@@ -18,46 +23,34 @@
 
 
         <form method="POST" th:action="@{/}">
-            Otsikko:<input type="text" name="name"/><br/>
-            Ingressi: <input type="text" name="ingressi" id="ingressi"/><br/>
+            Otsikko:<input type="text" name="name"/><br/><br/>
+            Ingressi:<textarea name="ingressi" rows="10" cols="30"></textarea><br/><br/>
+            Sisältö:<textarea  type="text" name="sisalto" rows="10" cols="30"></textarea><br/>
+            
             Kuva: <input type="text" name="kuva" id="kuva"/><br/>
-            Sisältö: <input type="text" name="sisalto" id="sisalto"/><br/>
+        
             Julkaisuaika <input type="text" name="time" id="time"/><br/>
             Kirjoittajat <input type="text" name="kirjoittajat" id="kirjoittajat"/><br/>
             Kategoria <input type="text" name="kategoria" id="kategoria"/><br/>
-
-
+           
+           
+          
             <input type="submit" value="Lisää"/>
         </form>
 
 
-        <!--...
-   <div>
-            Kirjoita otsikko, ingressi, uutisen sisältö ja paina Lisää:<br/>
-            
-            <form action="@{/}" method="POST">
-               Otsikko: <input type="text" name="name" id="name"/><br/>
-               Ingressi: <input type="text" name="ingressi" id="ingressi"/><br/>
-               Kuva: <input type="text" name="kuva" id="kuva"/><br/>
-               Sisältö: <input type="text" name="sisalto" id="sisalto"/><br/>
-               Julkaisuaika <input type="text" name="time" id="time"/><br/>
-               Kirjoittajat <input type="text" name="kirjoittajat" id="kirjoittajat"/><br/>
-               Kategoria <input type="text" name="kategoria" id="kategoria"/><br/>
-               
-                 <input type="submit" value="Lisää"/>          
-            </form>
-        </div>
-        -->
-     
+         <p>
+         Onks gategoriat valmiit..urheilu..kotomaa ulkomaa...niin että riippu...valikosta voi valita tms?  valitse kategoria(checkbox)tms...
+         </p>  
+        <div><a href="/listaus">Uutisten listaaminen</a></div>
+        <div><a href="/uutinen">Uutinen</a></div>
+        <a th:href="@{/uutinen}">News</a><br/>
+   
         <h2>luotu uutinen</h2>
 
 
-        <div>
-            <ul>
-                <li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li>
-            </ul>
-        </div>
-
+        
+        
 
     </body>
 

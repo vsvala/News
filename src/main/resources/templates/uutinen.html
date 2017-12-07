@@ -1,37 +1,67 @@
 <!DOCTYPE HTML>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Title</title>
+        <title>Uutinen</title>
     </head>
     <body>
-        
+           
         <div>
             <ul>
-                <li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li>
+               <a th:href="@{/uutinen}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen.kategoria}"></li></a>
+         
             </ul>
+        </div>
+        
+         <p>
+         navigaatio   kategoriaat linkit listana
+        </p>
+
+            <ol>
+            <li th:each="uutinen : ${uutinen}">
+                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">actor name</a>
+            </li>
+        </ol>
+        
+        
+        
+    
+        <h2>Uutinen:</h2>
+       
+       
+         <div>
+             
+            <ul>
+               <li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li>
+             <li th:each="uutinen : ${uutiset}" th:text="${uutinen.ingressi}"></li>
+              
+          </ul>
+            
         </div>
 
 
-        <h2>Uusimmat uutiset 5kpl</h2>
-        
+        <h2>Uusimmat uutset (lista)</h2>
+          <!--  -->
+          
+          
+        <div>
+            <ul>
+               <a th:href="@{/uutinen}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li></a>
+         
+            </ul>
+        </div>
+          
+         
+      
+        <h2>Luetuimmat (lista)</h2>
+          
+               <li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li>
+          
+              
         <p>
-          Uutissivuston etusivu listaa oletuksena viisi uusinta uutista siten, että jokaisesta uutisesta näkyy otsikko, ingressi ja kuva
-          Uutista klikkaamalla pääsee lukemaan koko uutisen.
-
-        </p>
-        
-        <p>
-            uutisten listaamiseen julkaisuajan perusteella, 
-            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-             jotka toimivat linkkeinä konkreettiseen uutiseen. 
-
-        </p>
-        <p>
-          listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella   
-        </p>
-        <p>
-          listaa  kategorian perusteella
+        Jokaisella uutissivulla tulee näkyä uutisen lisäksi myös julkaisuajan perusteella
+        sekä lukumäärien perusteella luodut listat. Sivuston ylälaidassa tulee näkyä kategoriat.
         </p>
    
 
