@@ -2,26 +2,67 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Title</title>
+        <title>Hallinta</title>
     </head>
     <body>
 
-        <h2>Items</h2>
+        <h2>Hallintapaneeli</h2>
+
+        <div><a href="/uutinen">Uutisten listaaminen</a></div>
+        <div><a href="/uutissivusto">Uutinen</a></div>
+
+        <h2>Lisää uutinen</h2>
+        <p>
+            Kirjoita otsikko, ingressi, uutisen sisältö ja paina Lisää:<br/>  
+        </p>
+
+
+        <form method="POST" th:action="@{/}">
+            Otsikko:<input type="text" name="name"/><br/>
+            Ingressi: <input type="text" name="ingressi" id="ingressi"/><br/>
+            Kuva: <input type="text" name="kuva" id="kuva"/><br/>
+            Sisältö: <input type="text" name="sisalto" id="sisalto"/><br/>
+            Julkaisuaika <input type="text" name="time" id="time"/><br/>
+            Kirjoittajat <input type="text" name="kirjoittajat" id="kirjoittajat"/><br/>
+            Kategoria <input type="text" name="kategoria" id="kategoria"/><br/>
+
+
+            <input type="submit" value="Lisää"/>
+        </form>
+
+
+        <!--...
+   <div>
+            Kirjoita otsikko, ingressi, uutisen sisältö ja paina Lisää:<br/>
+            
+            <form action="@{/}" method="POST">
+               Otsikko: <input type="text" name="name" id="name"/><br/>
+               Ingressi: <input type="text" name="ingressi" id="ingressi"/><br/>
+               Kuva: <input type="text" name="kuva" id="kuva"/><br/>
+               Sisältö: <input type="text" name="sisalto" id="sisalto"/><br/>
+               Julkaisuaika <input type="text" name="time" id="time"/><br/>
+               Kirjoittajat <input type="text" name="kirjoittajat" id="kirjoittajat"/><br/>
+               Kategoria <input type="text" name="kategoria" id="kategoria"/><br/>
+               
+                 <input type="submit" value="Lisää"/>          
+            </form>
+        </div>
+        -->
+     
+        <h2>luotu uutinen</h2>
+
 
         <div>
             <ul>
-                <li th:each="item : ${items}" th:text="${item.name}"></li>
+                <li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li>
             </ul>
         </div>
 
 
-        <h2>Add new</h2>
-
-        <form method="POST" th:action="@{/}">
-            <input type="text" name="name"/>
-            <input type="submit" value="Add"/>
-        </form>
-
     </body>
+
+
+
+
 
 </html>

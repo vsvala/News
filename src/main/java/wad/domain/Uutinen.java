@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @AllArgsConstructor
 @Data
 @Entity
-public class Item extends AbstractPersistable<Long> {
+public class Uutinen extends AbstractPersistable<Long> {
 
     private String name;
 

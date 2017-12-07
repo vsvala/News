@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+    </head>
+    <body>
+        
+        <div>
+            <ul>
+                <li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li>
+            </ul>
+        </div>
+
+
+        <h2>Uusimmat uutiset 5kpl</h2>
+        
+        <p>
+          Uutissivuston etusivu listaa oletuksena viisi uusinta uutista siten, että jokaisesta uutisesta näkyy otsikko, ingressi ja kuva
+          Uutista klikkaamalla pääsee lukemaan koko uutisen.
+
+        </p>
+        
+        <p>
+            uutisten listaamiseen julkaisuajan perusteella, 
+            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+             jotka toimivat linkkeinä konkreettiseen uutiseen. 
+
+        </p>
+        <p>
+          listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella   
+        </p>
+        <p>
+          listaa  kategorian perusteella
+        </p>
+   
+
+    </body>
+
+</html>
