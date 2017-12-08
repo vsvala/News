@@ -5,73 +5,49 @@
         <title>Hallinta</title>
     </head>
     <body style="background-color:darkseagreen">
-        <!--kommentti
-              <div>
-                  <ul>
-                      <a  th:href="@{/uutinen/{uutinenid}}"> UUTISTEN LISÄYS<li style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
-                                                                         font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}" th:text="${uutinen.kategoria}"  ></li></a>
-      
-                  </ul>
-              </div>
-        -->
+          
+    <!--  kategoriat listataan navigaatioksi -->
         <div>
             <ul>
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
                      font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
-                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen kategoria</a>
                 </li>
             </ul>
         </div> 
-
 
         <h1>Lisää uutinen</h1>
         <p>
             Kirjoita otsikko, ingressi, uutisen sisältö ja paina Lisää:<br/>  
         </p>
 
-        <!--kommentti
-              <li th:each="actor : ${actors}">
-                <a th:href="@{/actors/{actorId}(actorId=${actor.id})}" th:text="${actor.name}">actor name</a>
-
-                <form th:action="@{/actors/{actorId}(actorId=${actor.id})}" th:method="DELETE">
-                    <input type="submit" value="Remove" th:id="${'remove-' + actor.id}"/>
-                </form><br/ 
-        
-        -->
-
-
-
+        <!--kyselylomake uutiselle -->
 
         <form method="POST" th:action="@{/}">
             Otsikko:<input type="text" name="name" id="name"/><br/><br/>     <!--kommentti  Otsikko:<input type="text" name="name" id="name"/><br/><br/>   -->
-            Ingressi:<textarea name="ingressi" rows="10" cols="100"></textarea><br/><br/>
-            Sisältö:<textarea  type="text" name="sisalto" rows="20" cols="100"></textarea><br/>
-
-            Kuva: <input type="text" name="kuva" id="kuva"/><br/>
-            Kirjoittajat <input type="text" name="kirjoittajat" id="kirjoittajat"/><br/>
-            Kategoria <input type="text" name="kategoria" id="kategoria"/><br/>
-
-
+            Ingressi:<textarea type="text" name="ingres" rows="10" cols="50"></textarea><br/><br/>
+            Sisältö:<textarea type="text" name="sisalto" rows="20" cols="50"></textarea><br/>
+            Kuva: <input type="text" name="kuva"/><br/>
+            
+            Kirjoittajat <input type="text" name="kirjoittajat"/><br/>
+            Kategoria <input type="text" name="kategoria"/><br/>
 
             <input type="submit" value="Lisää"/>
         </form>
-
+ 
 
 
         <h2>Luodut uutiset</h2>
 
-
+ <!--listaa ja poistaa uuutisen id:n perusteella  -->
         <ol>
             <li th:each="uutinen : ${uutiset}">
                 <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
 
-                
- <!--poistaa uuutisen -->
- 
-
+            
                 <form th:action="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:method="DELETE">
                     <input type="submit" value="Remove" th:id="${'remove-' + uutinen.id}"/>
-                   
+                 
              
                 </form><br/>
 

@@ -1,6 +1,6 @@
 package wad.controller;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,9 @@ public class hallintaController {
  //luodaan malliuutinen ja  listataan kaikki  olemassa olevat uutiset tietokannasta ja palautetaan index sivulle
     @GetMapping("/")
     public String list(Model model) {
-//        if (uutinenRepository.findAll().isEmpty()) {//size o null?
+      
+                
+//        if (uutinenRepository.findAll().isEmpty()) {//size o     ==null?
 //            Uutinen malli = new Uutinen();
 //            malli.setName("Kumpulassa opiskeltiin ahkerasti");
 //            malli.setIngressi("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
@@ -41,22 +43,23 @@ public class hallintaController {
     }
     
     //poistetaan id:n mukainen uutinen tietokannasta ja uudelleen ohjataan indeksisivulle
-    @DeleteMapping("/uutinen/{uutinenId}")
-    public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
-        uutinenRepository.deleteById(uutinenId);
-        return "redirect:/";
-    }
+//    @DeleteMapping("/uutinen/{uutinenId}")
+//    public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
+//        uutinenRepository.deleteById(uutinenId);
+//        return "redirect:/";
+//    }
  
     //luodaan uutinen ja lähetetään se tietokantaan
     @PostMapping("/")
-    public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria) {// LocalDateTime time,
+    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategoria) {// LocalDateTime time,
         // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria); 
         // julkaisuaika = LocalDateTime.now();
         
         Uutinen eka = new Uutinen();
         eka.setName(name);
-        eka.setIngressi(ingressi);
+        eka.setIngres(ingres);
         eka.setSisalto(sisalto);
+        eka.setKuva(kuva);
         //eka.setJulkaisuaika(time);
         eka.setKirjoittajat(kirjoittajat);
         eka.setKategoria(kategoria);

@@ -1,24 +1,23 @@
 package wad.domain;
 
-import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NoArgsConstructor;;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-
+//@RequiredArgsConstructor 
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class Uutinen extends AbstractPersistable<Long> {
 
     
     private String name;
-    private String ingressi;  
+    private String ingres;  
     private String sisalto;
+    private String kuva;
     //private LocalDateTime time;
     private String kirjoittajat;
     private String kategoria; 
@@ -26,7 +25,7 @@ public class Uutinen extends AbstractPersistable<Long> {
 //  public Uutinen() {
 //    
 //      } 
-// public Uutinen( String name,String ingressi, String sisalto,  LocalDateTime julkaisuaika, String kirjoittajat, String kategoria) {
+// public Uutinen( String name,  String sisalto,  LocalDateTime julkaisuaika, String kirjoittajat, String kategoria) {
 //     this.julkaisuaika = LocalDateTime.now();
 //     this.
 //     

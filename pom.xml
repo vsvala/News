@@ -65,14 +65,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-       
-        <dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-</dependency>
-       
-        
-        
+            
         <!-- TMC -->
         <dependency>
             <groupId>fi.helsinki.cs.tmc</groupId>
