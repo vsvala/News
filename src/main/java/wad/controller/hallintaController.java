@@ -38,12 +38,14 @@ public class hallintaController {
         // model.addAttribute("uutiset", uutinenService.list());
         return "index";
     }
+    
 
     @DeleteMapping("/uutinen/{uutinenId}")
     public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
         uutinenRepository.deleteById(uutinenId);
         return "redirect:/";
     }
+ 
 
     @PostMapping("/")
     public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria) {// LocalDateTime time,
@@ -62,12 +64,7 @@ public class hallintaController {
     }
 }
 
-//  
-//     @DeleteMapping("/movies/{movieId}")
-//    public String remove(@PathVariable(value = "movieId") Long movieId) {
-//        movieService.remove(movieId);
-//        return "redirect:/movies";
-//   
+
 //       @GetMapping("/uutinen/{uutinenId}")
 //    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
 //        model.addAttribute("uutiset", uutinenRepository.findById(uutinenId).get().getName());;

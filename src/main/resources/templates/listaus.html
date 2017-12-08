@@ -1,102 +1,68 @@
 <!DOCTYPE HTML>
- <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
         <title>Title</title>
     </head>
     <body>
-            <div>
-            <ul>
+        <div>
+            <ul> kategoriat :   
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
                      font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
                     <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
                     <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
                 </li>
             </ul>
-        </div>
-        
-        
-           <h2>luotu uutinen</h2>
-            <div>
-                <ul>
-                    <a th:href="@{/uutinen/{id}}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li></a>
-
-                </ul>
-            </div>
+        </div><br/>
 
 
-
-        </div>
-
-
-        <h2>Uusimmat uutset (lista)</h2>
-        <!--  -->
+        <h1>Uusimmat uutiset (5kpl) (otsikko ingressi ja kuva) jäsrjestettynä julkaisuajan perusteella</h1>
 
         <div>
-            <ul>
-                <a th:href="@{/uutinen/*}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li></a>
+            <ol>
 
-            </ul>
-        </div>
+                <li th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ol>
+        </div><br/>    
 
+        <!--  -->
+        <div>
+            <h2>Luetuimmat: (nimi ja pvm)</h2>     
+            <p>
+                listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
+                Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+            näihin  linkit konkreettiseen uutiseen. 
+            </p>
 
+            <ol>
 
-        <h2>Luetuimmat (lista)</h2>
+                <li th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                    <!--Tähän pitäis saada pvm mukaan
+                    kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ol>
+        </div> <br/><br/> 
 
-        <li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li>
+        <div>
+            <h2>Uutiset kategorioittain??? (kategoria nimi ja pvm)</h2>     
 
+            <ol>
 
-        <p>
-            Jokaisella uutissivulla tulee näkyä uutisen lisäksi myös julkaisuajan perusteella
-            sekä lukumäärien perusteella luodut listat. Sivuston ylälaidassa tulee näkyä kategoriat.
-        </p>
+                <li th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
+                    <!--Tähän pitäis saada pvm mukaan
+                    kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ol>
+        </div> <br/><br/>
+
 
         <div><a href="/">Lisää uusi uutinen</a></div>
- 
         
-        
-        
-         <p>
-         navigaatio   kategoriaat linkit listana
-        </p>
-
-        <h2>Uusimmat uutiset 5kpl</h2>
-          
-       <div>
-            <ul>
-                <li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li>
-            </ul>
-        </div>
-
-        <p>
-            OTSIKKO INGRESSI KUVA!!!!!!!
-          Uutissivuston etusivu listaa oletuksena viisi uusinta uutista siten, että jokaisesta uutisesta näkyy otsikko, ingressi ja kuva
-          Uutista klikkaamalla pääsee lukemaan koko uutisen.  Lisää näihin linkit.. lisää näyttämän ingressi ja kuva
-
-        </p>
-        
-         <h2>Uutiset jullkaisuajan perusteella</h2>
-          <div>
-            <ul>
-                <li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li>
-            </ul>
-        </div>
-
-         
-        <p>
-           OTSIKKO ja PÄIVÄMÄÄRÄ!!!
-           
-            uutisten listaamiseen julkaisuajan perusteella, 
-            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-            näihin  linkit konkreettiseen uutiseen. 
-
-        </p>
-           <h2>Uutiset lukumäärän perusteella</h2>
-        <p>
-          listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella   
-        </p>
-
-
     </body>
 
 </html>

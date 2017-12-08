@@ -20,7 +20,7 @@ public class listausController {
     public String list(Model model) {
         model.addAttribute("uutiset", uutinenRepository.findAll());
         //model.addAttribute("actors", actorService.list());
-        return "uutinen";
+        return "listaus";
     }
 
     @GetMapping("/listaus/{uutinenId}")
@@ -33,7 +33,7 @@ public class listausController {
         return "listaus";
 //return "actor"
     }
-        @PostMapping("/listaus/{uutinenId}")
+        @PostMapping("/listaus")
     public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria, @PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
         //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
         Uutinen eka = new Uutinen();
@@ -46,7 +46,7 @@ public class listausController {
         eka.setKategoria(kategoria);
         uutinenRepository.save(eka);
 
-        return "redirect:/listaus/*";
+        return "redirect:/listaus";
     }
 
 }

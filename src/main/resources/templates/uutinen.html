@@ -16,29 +16,7 @@
                 </li>
             </ul>
         </div> 
-        <!--kommentti 
-                
-                    <div>
-                 <ul>
-                    <a  th:href="@{/uutinen/{uutinenId}}"> UUTISTEN LISÄYS<li style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
-                   font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}" th:text="${uutinen.kategoria}"  ></li></a>
-              
-                 </ul>
-             </div>
-             
-              <p>
-              navigaatio   kategoriaat linkit listana
-             </p>
-             <h2>Uutinen:</h2>
-            
-              
-                   <li th:each="actor : ${actors}">
-                     <a th:href="@{/actors/{actorId}(actorId=${actor.id})}" th:text="${actor.name}">actor name</a>
-     
-                     <form th:action="@{/actors/{actorId}(actorId=${actor.id})}" th:method="DELETE">
-                         <input type="submit" value="Remove" th:id="${'remove-' + actor.id}"/>
-                     </form><br/ 
-     <h1 th:each="uutinen : ${news}" th:value="${uutinen.id}" th:text="${uutinen.name}"</h1>          
+        <!--kommentti          
         -->
 
        
@@ -60,50 +38,11 @@
                 <li th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kirjoittajat}"></li>
                 <li th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kategoria}"></li>
 
-     
-            </ul> 
-            
-        
-
-            <h2>luotu uutinen</h2>
-            <div>
-                <ul>
-                    <a th:href="@{/uutinen/{id}}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li></a>
-
-                </ul>
-            </div>
-
-
-
-        </div>
-
-
-        <h2>Uusimmat uutset (lista)</h2>
-      
-
-        <div>
-            <ul>
-                <a th:href="@{/uutinen/*}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li></a>
-
-            </ul>
-        </div>
-
-
-
-        <h2>Luetuimmat (lista)</h2>
-
-        <li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li>
-
-
-        <p>
-            Jokaisella uutissivulla tulee näkyä uutisen lisäksi myös julkaisuajan perusteella
-            sekä lukumäärien perusteella luodut listat. Sivuston ylälaidassa tulee näkyä kategoriat.
-        </p>
           -->
 
         <div><a href="/">Lisää uusi uutinen</a></div><br/>
         
-      <div><a href="/listaus">Hae uutisia</a></div>
+      <div><a href="/listaus">Uutisten listaaminen</a></div>
     </body>
 
 </html>
