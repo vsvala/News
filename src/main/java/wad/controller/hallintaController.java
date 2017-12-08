@@ -20,7 +20,8 @@ public class hallintaController {
 //    
     @Autowired
     private UutinenRepository uutinenRepository;
-
+  
+ //luodaan malliuutinen ja  listataan kaikki  olemassa olevat uutiset tietokannasta ja palautetaan index sivulle
     @GetMapping("/")
     public String list(Model model) {
         if (uutinenRepository.findAll().isEmpty()) {//size o null?
@@ -33,20 +34,20 @@ public class hallintaController {
             malli.setKategoria("Paikallisuutiset");
             uutinenRepository.save(malli);
         }
-
+   
         model.addAttribute("uutiset", uutinenRepository.findAll());   
         // model.addAttribute("uutiset", uutinenService.list());
         return "index";
     }
     
-
+    //poistetaan id:n mukainen uutinen tietokannasta ja uudelleen ohjataan indeksisivulle
     @DeleteMapping("/uutinen/{uutinenId}")
     public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
         uutinenRepository.deleteById(uutinenId);
         return "redirect:/";
     }
  
-
+    //luodaan uutinen ja lähetetään se tietokantaan
     @PostMapping("/")
     public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria) {// LocalDateTime time,
         // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria); 
