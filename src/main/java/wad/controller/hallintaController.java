@@ -43,11 +43,11 @@ public class hallintaController {
     }
     
     //poistetaan id:n mukainen uutinen tietokannasta ja uudelleen ohjataan indeksisivulle
-//    @DeleteMapping("/uutinen/{uutinenId}")
-//    public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
-//        uutinenRepository.deleteById(uutinenId);
-//        return "redirect:/";
-//    }
+    @DeleteMapping("/uutinen/{uutinenId}")
+    public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
+        uutinenRepository.deleteById(uutinenId);
+        return "redirect:/";
+    }
  
     //luodaan uutinen ja lähetetään se tietokantaan
     @PostMapping("/")
