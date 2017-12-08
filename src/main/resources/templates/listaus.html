@@ -1,10 +1,61 @@
 <!DOCTYPE HTML>
-  <!-- <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+ <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
         <title>Title</title>
     </head>
     <body>
+            <div>
+            <ul>
+                <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
+                     font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
+                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ul>
+        </div>
+        
+        
+           <h2>luotu uutinen</h2>
+            <div>
+                <ul>
+                    <a th:href="@{/uutinen/{id}}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li></a>
+
+                </ul>
+            </div>
+
+
+
+        </div>
+
+
+        <h2>Uusimmat uutset (lista)</h2>
+        <!--  -->
+
+        <div>
+            <ul>
+                <a th:href="@{/uutinen/*}"><li th:each="uutinen : ${uutiset}" th:text="${uutinen.name}"></li></a>
+
+            </ul>
+        </div>
+
+
+
+        <h2>Luetuimmat (lista)</h2>
+
+        <li th:each="uutinen : ${uutiset}" th:text="${uutinen}"></li>
+
+
+        <p>
+            Jokaisella uutissivulla tulee näkyä uutisen lisäksi myös julkaisuajan perusteella
+            sekä lukumäärien perusteella luodut listat. Sivuston ylälaidassa tulee näkyä kategoriat.
+        </p>
+
+        <div><a href="/">Lisää uusi uutinen</a></div>
+ 
+        
+        
+        
          <p>
          navigaatio   kategoriaat linkit listana
         </p>
@@ -49,4 +100,3 @@
     </body>
 
 </html>
--->
