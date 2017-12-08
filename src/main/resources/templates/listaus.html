@@ -1,5 +1,5 @@
 
-<!DOCTYPE HTML> <!-- 
+<!DOCTYPE HTML> 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
                      font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
                     <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
                     <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-          <!--       </li>
+            </li>
             </ul>
         </div><br/>
 
@@ -25,7 +25,7 @@
                 <li th:each="uutinen : ${uutiset}">
                     <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
                     <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-            <!--     </li>
+           </li>
             </ol>
         </div><br/>    
 
@@ -44,7 +44,7 @@
                     <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
                     <!--Tähän pitäis saada pvm mukaan
                     kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-            <!--      </li>
+              </li>
             </ol>
         </div> <br/><br/> 
 
@@ -57,7 +57,7 @@
                     <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
                     <!--Tähän pitäis saada pvm mukaan
                     kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-              <!--    </li>
+               </li>
             </ol>
         </div> <br/><br/>
 
@@ -66,4 +66,4 @@
         
     </body>
 
-</html> -->
+</html> 
