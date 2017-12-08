@@ -19,10 +19,10 @@ public class Uutinen extends AbstractPersistable<Long> {
     private String name;
     private String ingressi;  
     private String sisalto;
-    private LocalDateTime julkaisuaika;
+    //private LocalDateTime time;
     private String kirjoittajat;
     private String kategoria; 
-    private Long identifier;
+   // private Long identifier;
 //  public Uutinen() {
 //    
 //      } 

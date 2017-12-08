@@ -24,16 +24,16 @@ public class hallintaController {
  //luodaan malliuutinen ja  listataan kaikki  olemassa olevat uutiset tietokannasta ja palautetaan index sivulle
     @GetMapping("/")
     public String list(Model model) {
-        if (uutinenRepository.findAll().isEmpty()) {//size o null?
-            Uutinen malli = new Uutinen();
-            malli.setName("Kumpulassa opiskeltiin ahkerasti");
-            malli.setIngressi("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
-            malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
-            //eka.setJulkaisuaika(time);
-            malli.setKirjoittajat("Martta Meikäläinen");
-            malli.setKategoria("Paikallisuutiset");
-            uutinenRepository.save(malli);
-        }
+//        if (uutinenRepository.findAll().isEmpty()) {//size o null?
+//            Uutinen malli = new Uutinen();
+//            malli.setName("Kumpulassa opiskeltiin ahkerasti");
+//            malli.setIngressi("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
+//            malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
+//            //eka.setJulkaisuaika(time);
+//            malli.setKirjoittajat("Martta Meikäläinen");
+//            malli.setKategoria("Paikallisuutiset");
+//            uutinenRepository.save(malli);
+//        }
    
         model.addAttribute("uutiset", uutinenRepository.findAll());   
         // model.addAttribute("uutiset", uutinenService.list());
