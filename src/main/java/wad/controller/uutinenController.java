@@ -1,54 +1,64 @@
-package wad.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import wad.domain.Uutinen;
-import wad.repository.UutinenRepository;
-//import service.UutinenService;
-
-@Controller
-public class uutinenController {
-
-//   @Autowired
-//    private  UutinenService uutinenService;
+//package wad.controller;
 //
-    @Autowired
-    private UutinenRepository uutinenRepository;
-
-    @GetMapping("/uutinen")
-    public String list(Model model) {
-        model.addAttribute("uutiset", uutinenRepository.findAll());
-        //model.addAttribute("actors", actorService.list());
-        return "uutinen";
-    }
- 
-    
-
-//    @PostMapping("/uutinen")
-//    public String add(@RequestParam String name) {
-//        // actorService.add(name);
-//        return "redirect:/uutinen";
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import wad.domain.Uutinen;
+//import wad.repository.UutinenRepository;
+////import service.UutinenService;
+//
+//@Controller
+//public class uutinenController {
+//
+////   @Autowired
+////    private  UutinenService uutinenService;
+////
+//    @Autowired
+//    private UutinenRepository uutinenRepository;
+//
+//    @GetMapping("/uutinen")
+//    public String list(Model model) {
+//        model.addAttribute("uutiset", uutinenRepository.findAll());
+//        //model.addAttribute("actors", actorService.list());
+//        return "uutinen";
 //    }
-
-    @GetMapping("/uutinen/{uutinenId}")
-    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
-                model.addAttribute("news", uutinenRepository.getOne(uutinenId));
-                 model.addAttribute("uutiset", uutinenRepository.findAll());
-       // model.addAttribute("uutiset", uutinenRepository.findById(uutinenId));
-//     model.addAttribute("actor", actorService.findById(actorId));
-        //    model.addAttribute("movies", movieService.listMoviesWithout(actorId))
-        return "uutinen";
-//return "actor"
-    }
-    
-    
-    
-    
+//
+////    @PostMapping("/uutinen")
+////    public String add(@RequestParam String name) {
+////        // actorService.add(name);
+////        return "redirect:/uutinen";
+////    }
+//    @GetMapping("/uutinen/{uutinenId}")
+//    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
+//        model.addAttribute("news", uutinenRepository.getOne(uutinenId));
+//        model.addAttribute("uutiset", uutinenRepository.findAll());
+//        // model.addAttribute("uutiset", uutinenRepository.findById(uutinenId));
+////     model.addAttribute("actor", actorService.findById(actorId));
+//        //    model.addAttribute("movies", movieService.listMoviesWithout(actorId))
+//        return "uutinen";
+////return "actor"
+//    }
+//
+//    @PostMapping("/uutinen/{uutinenId}")
+//    public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria, @PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
+//        //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
+//        Uutinen eka = new Uutinen();
+//        eka.setName(name);
+//        eka.setIngressi(ingressi);
+//        eka.setSisalto(sisalto);
+//        eka.setIdentifier(uutinenId);
+//        //eka.setJulkaisuaika(julkaisuaika);
+//        eka.setKirjoittajat(kirjoittajat);
+//        eka.setKategoria(kategoria);
+//        uutinenRepository.save(eka);
+//
+//        return "redirect:/uutinen/*";
+//    }
+//}
 
 //    @GetMapping("/uutinen/{uutinenId}")
 //    
@@ -97,20 +107,4 @@ public class uutinenController {
 ////       //model.addAttribute("uutiset", uutinenRepository.getOne(uutinenId).getName());
 //        return "uutinen";
 //    }   
-    @PostMapping("/uutinen/{uutinenId}")
-    public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria, @PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
-        //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
-        Uutinen eka = new Uutinen();
-        eka.setName(name);
-        eka.setIngressi(ingressi);
-        eka.setSisalto(sisalto);
-        eka.setIdentifier(uutinenId);
-        //eka.setJulkaisuaika(julkaisuaika);
-        eka.setKirjoittajat(kirjoittajat);
-        eka.setKategoria(kategoria);
-        uutinenRepository.save(eka);
 
-        return "redirect:/uutinen/*";
-    }
-
-}

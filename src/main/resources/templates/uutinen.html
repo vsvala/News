@@ -6,20 +6,20 @@
         <title>Uutinen</title>
     </head>
     <body>
-
+   <!--kommentti  
         <div>
             <ul>
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
                      font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
                     <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
                     <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-                </li>
+             <!--kommentti      </li>
             </ul>
         </div> 
-        <!--kommentti          
+               
         -->
 
-       
+      <!--kommentti    
   <div>
    <h1 th:each="uutinen : ${news}" th:value="${uutinen.id}" th:text="${uutinen.name}"></h1>
    <h2 th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.ingressi}"></h2>
