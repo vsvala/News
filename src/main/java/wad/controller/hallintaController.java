@@ -23,7 +23,7 @@ public class hallintaController {
 
     @GetMapping("/")
     public String list(Model model) {
-        if (uutinenRepository.findAll().size()==0) {
+        if (uutinenRepository.findAll().isEmpty()) {//size o null?
             Uutinen malli = new Uutinen();
             malli.setName("Kumpulassa opiskeltiin ahkerasti");
             malli.setIngressi("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
@@ -34,7 +34,7 @@ public class hallintaController {
             uutinenRepository.save(malli);
         }
 
-        model.addAttribute("uutiset", uutinenRepository.findAll());
+        model.addAttribute("uutiset", uutinenRepository.findAll());   
         // model.addAttribute("uutiset", uutinenService.list());
         return "index";
     }
@@ -51,6 +51,7 @@ public class hallintaController {
     public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria) {// LocalDateTime time,
         // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria); 
         // julkaisuaika = LocalDateTime.now();
+        
         Uutinen eka = new Uutinen();
         eka.setName(name);
         eka.setIngressi(ingressi);
