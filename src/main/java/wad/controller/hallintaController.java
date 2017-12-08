@@ -23,22 +23,33 @@ public class hallintaController {
 
     @GetMapping("/")
     public String list(Model model) {
-       model.addAttribute("uutiset", uutinenRepository.findAll());
-       // model.addAttribute("uutiset", uutinenService.list());
+        if (uutinenRepository.findAll().size()==0) {
+            Uutinen malli = new Uutinen();
+            malli.setName("Kumpulassa opiskeltiin ahkerasti");
+            malli.setIngressi("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
+            malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
+            //eka.setJulkaisuaika(time);
+            malli.setKirjoittajat("Martta Meikäläinen");
+            malli.setKategoria("Paikallisuutiset");
+            uutinenRepository.save(malli);
+        }
+
+        model.addAttribute("uutiset", uutinenRepository.findAll());
+        // model.addAttribute("uutiset", uutinenService.list());
         return "index";
     }
-    
+
     @DeleteMapping("/uutinen/{uutinenId}")
     public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
-       uutinenRepository.deleteById(uutinenId);
+        uutinenRepository.deleteById(uutinenId);
         return "redirect:/";
     }
-    
-       @PostMapping("/")
-    public String createUutinen(@RequestParam String name,String ingressi, String sisalto, String kirjoittajat, String kategoria) {// LocalDateTime time,
-       // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria); 
-       // julkaisuaika = LocalDateTime.now();
-       Uutinen eka = new Uutinen();
+
+    @PostMapping("/")
+    public String createUutinen(@RequestParam String name, String ingressi, String sisalto, String kirjoittajat, String kategoria) {// LocalDateTime time,
+        // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria); 
+        // julkaisuaika = LocalDateTime.now();
+        Uutinen eka = new Uutinen();
         eka.setName(name);
         eka.setIngressi(ingressi);
         eka.setSisalto(sisalto);
@@ -47,21 +58,9 @@ public class hallintaController {
         eka.setKategoria(kategoria);
         uutinenRepository.save(eka);
 
-        return  "redirect:/";                   //"redirect:/";samalle sivulle
+        return "redirect:/";                   //"redirect:/";samalle sivulle
     }
- } 
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 //  
 //     @DeleteMapping("/movies/{movieId}")
@@ -69,15 +68,12 @@ public class hallintaController {
 //        movieService.remove(movieId);
 //        return "redirect:/movies";
 //   
-    
-    
 //       @GetMapping("/uutinen/{uutinenId}")
 //    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
 //        model.addAttribute("uutiset", uutinenRepository.findById(uutinenId).get().getName());;
 //        return "uutinen";
 //    }
 //    
-
 //    @PostMapping("/")
 //    public String create(@RequestParam String name){
 //        Uutinen eka = new Uutinen();
@@ -88,15 +84,12 @@ public class hallintaController {
 //        uutinenRepository.save(eka);
 //        return "redirect:/";
 //    }
- 
-     
 //    @PostMapping("/actors/{actorId}/movies")
 //    public String addActorToMovie(@PathVariable(value = "actorId") Long actorId,
 //            @RequestParam(value = "movieId") Long movieId) {
 //        uutinenRepository.addActorToMovie(actorId, movieId);
 //        return "redirect:/actors";
 //    }
-
 //        
 //    @GetMapping("/uutinen")
 //    public String listaauutinen(Model model) {
