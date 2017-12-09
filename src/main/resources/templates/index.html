@@ -11,7 +11,7 @@
             <ul>
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
                      font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
-                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen kategoria</a>
+                    <a th:href="@{/listaus/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen kategoria</a>
                 </li>
             </ul>
         </div> 

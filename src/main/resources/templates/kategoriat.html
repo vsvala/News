@@ -1,0 +1,145 @@
+
+<!DOCTYPE HTML> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>kategoriat</title>
+    </head>
+    <body>
+        <div>
+            <ul> kategoriat :   
+                <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
+                     font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
+                    <a th:href="@{listaus/kategoriat/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>
+                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ul>
+        </div><br/>
+
+        <h1>Paikallisuutiset (Helsinki)</h1>
+        <p>
+            tähän pitäis tulla listaus paikallisuutisiin kuuluvista uutisista
+        </p>
+        <div>
+            <ol>
+
+                <li th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ol>
+        </div><br/>    
+        <h1>Kotimaanuutiset</h1>
+        <p>
+            tähän pitäis tulla listaus paikallisuutisiin kuuluvista uutisista
+        </p>
+        <div>
+            <ol>
+
+                <li th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ol>
+        </div><br/>    
+
+      
+            tähän pitäis tulla listaus paikallisuutisiin kuuluvista uutisista
+        </p>
+        <div>
+
+        <div>
+            <h1>Ulkomaan uutiset</h1>     
+            <p>
+                listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
+                Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+                näihin  linkit konkreettiseen uutiseen. 
+            </p>
+
+            <ol>
+
+                <li th:each="uutinen : ${uutiset}">
+                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                    <!--Tähän pitäis saada pvm mukaan
+                    kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                </li>
+            </ol>
+        </div> <br/><br/> 
+
+          <div>
+        <h1>Kulttuuri</h1>     
+        <p>
+            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
+            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+            näihin  linkit konkreettiseen uutiseen. 
+        </p>
+
+        <ol>
+
+            <li th:each="uutinen : ${uutiset}">
+                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                <!--Tähän pitäis saada pvm mukaan
+                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+            </li>
+        </ol>
+        </div> <br/><br/
+
+     <div>
+        <h1>Urheilu</h1>     
+        <p>
+            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
+            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+            näihin  linkit konkreettiseen uutiseen. 
+        </p>
+
+        <ul>
+
+            <li th:each="uutinen : ${uutiset}">
+                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                <!--Tähän pitäis saada pvm mukaan
+                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+            </li>
+        </ul>
+        </div> <br/><br
+
+  <div>
+        <h1>politiikka</h1>     
+        <p>
+            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
+            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+            näihin  linkit konkreettiseen uutiseen. 
+        </p>
+
+        <ul>
+
+            <li th:each="uutinen : ${uutiset}">
+                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                <!--Tähän pitäis saada pvm mukaan
+                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+            </li>
+        </ul>
+        </div> <br/><br
+<div>
+        <h1>talous</h1>     
+        <p>
+            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
+            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+            näihin  linkit konkreettiseen uutiseen. 
+        </p>
+
+        <ul>
+
+            <li th:each="uutinen : ${uutiset}">
+                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
+                <!--Tähän pitäis saada pvm mukaan
+                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+            </li>
+        </ul>
+            </div> <br/><br>
+
+            <div><a href="/">Lisää uusi uutinen</a></div>
+             <div><a href="/listaus">Listaa uutisia</a></div>
+
+    </body>
+
+</html> 

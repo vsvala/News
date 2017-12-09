@@ -1,6 +1,7 @@
 package wad.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,22 @@ public class Uutinen extends AbstractPersistable<Long> {
     private LocalDateTime aika;
     private String kirjoittajat;
     private String kategoria; 
-   // private Long identifier;
+    private Long identifier;
+    
+    
+    
+    public Uutinen(String name, String ingres, String kuva) {
+        this.name= name;
+        this.ingres=ingres;
+        this.kuva=kuva; 
+    }
+    
+       
+    public Uutinen(String name, LocalDateTime aika) {
+        this.name= name;
+        this.aika=aika;
+    }
+   // private List<Uutinen>uutislista;   many to
 //  public Uutinen() {
 //    
 //      } 
