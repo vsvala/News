@@ -16,14 +16,13 @@
                 </li>
             </ul>
         </div> 
-               
-       
-
- 
+   
   <div>
    <h1 th:each="uutinen : ${news}" th:value="${uutinen.id}" th:text="${uutinen.name}"></h1>
    <h2 th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.ingres}"></h2>
    <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.sisalto}"></p><br/> 
+   <p>Julkaisuaika:</p>
+   <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.aika}"></p><br/>
    <p>kirjoittaja:</p>
    <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kirjoittajat}"></p><br/>
    <p>kategoria:</p>

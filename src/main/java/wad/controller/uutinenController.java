@@ -1,6 +1,9 @@
 package wad.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +55,7 @@ public class uutinenController {
         eka.setSisalto(sisalto);
         eka.setKuva(kuva);
         //eka.setIdentifier(uutinenId);
-        //eka.setJulkaisuaika(julkaisuaika);
+        eka.setAika(LocalDateTime.now());
         eka.setKirjoittajat(kirjoittajat);
         eka.setKategoria(kategoria);
         uutinenRepository.save(eka);

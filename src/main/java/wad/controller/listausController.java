@@ -1,6 +1,12 @@
 package wad.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,13 +22,30 @@ public class listausController {
     @Autowired
     private UutinenRepository uutinenRepository;
 
-        @GetMapping("/listaus")
+//        @GetMapping("/listaus")
+//    public String list(Model model) {
+//        model.addAttribute("uutiset", uutinenRepository.findAll());
+//        //model.addAttribute("actors", actorService.list());
+//        return "listaus";
+//    }
+
+    @GetMapping("/listaus")
     public String list(Model model) {
-        model.addAttribute("uutiset", uutinenRepository.findAll());
+        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "aika");
+        model.addAttribute("uutiset", uutinenRepository.findAll(pageable));
+       // model.addAttribute("exams", uutinenRepository.findAll(PageRequest.of(0, 100, Sort.Direction.ASC, "examDate")));
         //model.addAttribute("actors", actorService.list());
         return "listaus";
-    }
+    }    
 
+//    @GetMapping("/messages") //pyyntöpalvelimelle
+//    public String list(Model model) {
+//        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "messageDate");
+//        model.addAttribute("messages", messageRepository.findAll(pageable));//repostirory hakee tietokannasta kaikki model atrriute näyttää sivulla
+//        return "messages"; //palauttaa messages html sivun
+//    }
+    
+    
     @GetMapping("/listaus/{uutinenId}")
     public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
                 model.addAttribute("news", uutinenRepository.getOne(uutinenId));
@@ -42,7 +65,7 @@ public class listausController {
         eka.setSisalto(sisalto);
         eka.setKuva(kuva);
         //eka.setIdentifier(uutinenId);
-        //eka.setJulkaisuaika(julkaisuaika);
+        eka.setAika(LocalDateTime.now());
         eka.setKirjoittajat(kirjoittajat);
         eka.setKategoria(kategoria);
         uutinenRepository.save(eka);

@@ -1,7 +1,10 @@
 package wad.controller;
 
 //import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,16 +29,17 @@ public class hallintaController {
     public String list(Model model) {
       
                 
-//        if (uutinenRepository.findAll().isEmpty()) {//size o     ==null?
-//            Uutinen malli = new Uutinen();
-//            malli.setName("Kumpulassa opiskeltiin ahkerasti");
-//            malli.setIngressi("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
-//            malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
-//            //eka.setJulkaisuaika(time);
-//            malli.setKirjoittajat("Martta Meikäläinen");
-//            malli.setKategoria("Paikallisuutiset");
-//            uutinenRepository.save(malli);
-//        }
+        if (uutinenRepository.findAll().isEmpty()) {//size o     ==null?
+            Uutinen malli = new Uutinen();
+            malli.setName("Kumpulassa opiskeltiin ahkerasti");
+            malli.setIngres("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
+            malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
+            malli.setKuva("tähän pitäis saada vielä kuva");
+            malli.setAika(LocalDateTime.now());
+            malli.setKirjoittajat("Martta Meikäläinen");
+            malli.setKategoria("Paikallisuutiset");
+            uutinenRepository.save(malli);
+        }
    
         model.addAttribute("uutiset", uutinenRepository.findAll());   
         // model.addAttribute("uutiset", uutinenService.list());
@@ -60,7 +64,7 @@ public class hallintaController {
         eka.setIngres(ingres);
         eka.setSisalto(sisalto);
         eka.setKuva(kuva);
-        //eka.setJulkaisuaika(time);
+        eka.setAika(LocalDateTime.now());
         eka.setKirjoittajat(kirjoittajat);
         eka.setKategoria(kategoria);
         uutinenRepository.save(eka);
