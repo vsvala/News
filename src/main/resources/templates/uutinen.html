@@ -19,10 +19,10 @@
                
        
 
-   
+ 
   <div>
    <h1 th:each="uutinen : ${news}" th:value="${uutinen.id}" th:text="${uutinen.name}"></h1>
-   <h2 th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.ingressi}"></h2>
+   <h2 th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.ingres}"></h2>
    <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.sisalto}"></p><br/> 
    <p>kirjoittaja:</p>
    <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kirjoittajat}"></p><br/>
@@ -30,6 +30,8 @@
    <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kategoria}"></p><br/>
      </div>
             <!--kommentti   
+
+      <!--kommentti
             <ul>
                 <li th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.name}"></li>
                 <li th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.ingressi}"></li>
