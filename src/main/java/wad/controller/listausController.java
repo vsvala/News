@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import wad.domain.Kategoriat;
 import wad.domain.Uutinen;
+import wad.repository.KategoriatRepository;
 import wad.repository.UutinenRepository;
 
 @Controller
@@ -25,36 +27,80 @@ public class listausController {
 
     public listausController() {
         this.uutislista = new ArrayList<>();
-// this.uutislista.add(new Uutinen("uutinen1", "ingress", "kuva" ,"sisältö"," kirjoittaja"));
+//       this.uutislista.add(new Uutinen("uutinen1", "ingress", "kuva" ,"sisältö"," kirjoittaja"));
     }
-
     @Autowired
-    private UutinenRepository uutinenRepository;
-
-    
-    
-//        @GetMapping("/listaus")
-//    public String list(Model model) {
-//        model.addAttribute("uutiset", uutinenRepository.findAll());
-//        //model.addAttribute("actors", actorService.list());
-//        return "listaus";
-//    }
+    private UutinenService uutinenService;
+    @Autowired
+    private KategoriatRepository kategoriatRepository; 
+    @Autowired
+    private UutinenRepository uutinenRepository;      
+ 
 
     @GetMapping("/listaus")
     public String list(Model model) {
         Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "aika");
         model.addAttribute("uutiset", uutinenRepository.findAll(pageable));
-       // model.addAttribute("exams", uutinenRepository.findAll(PageRequest.of(0, 100, Sort.Direction.ASC, "examDate")));
-        //model.addAttribute("actors", actorService.list());
         return "listaus";
     }    
-
-//    @GetMapping("/messages") //pyyntöpalvelimelle
-//    public String list(Model model) {
-//        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "messageDate");
-//        model.addAttribute("messages", messageRepository.findAll(pageable));//repostirory hakee tietokannasta kaikki model atrriute näyttää sivulla
-//        return "messages"; //palauttaa messages html sivun
+          @GetMapping("/listaus/{uutinenId}")
+    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
+         model.addAttribute("lista", uutislista);
+           model.addAttribute("kategoriat", kategoriatRepository.findAll());
+//        model.addAttribute("news", uutinenRepository.getOne(uutinenId));
+//        model.addAttribute("uutiset", uutinenRepository.findAll());
+        // model.addAttribute("uutiset", uutinenRepository.findById(uutinenId));
+//     model.addAttribute("actor", actorService.findById(actorId));
+        //    model.addAttribute("movies", movieService.listMoviesWithout(actorId))
+        return "listaus";
+    }
+            @PostMapping("/listaus/{uutinenId}")
+    public String createUutinen(@RequestParam String name, String ingres, String kuva, String sisalto, String kirjoittajat, String kategori, Kategoriat kategoria) {//@PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
+        //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
+      
+        Uutinen eka = new Uutinen();
+        eka.setName(name);
+        eka.setIngres(ingres);
+        eka.setSisalto(sisalto);
+        eka.setKuva(kuva);
+        //eka.setIdentifier(uutinenId);
+        eka.setAika(LocalDateTime.now());
+        eka.setKirjoittajat(kirjoittajat);
+        eka.setKategori(kategori);  
+        this.uutislista.add(eka);
+      
+        kategoriatRepository.save(kategoria);
+        uutinenRepository.save(eka);
+           
+  
+      //  return "redirect:/listaus/*";
+   
+        return "redirect:/";                   //  "redirect:/";  samalle sivulle
+    }
+      }
+//     
+//     @PostMapping("/listaus/{uutinenId}")
+//    public String add(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria) {
+//        uutinenService.add(name, ingres, sisalto, kuva, kirjoittajat, kategori, kategoria);
+//        return "redirect:/";
 //    }
+// 
+////lisää ohjaa lisää uutisen  submit   uutinen sivustolle
+//    @PostMapping("/uutinen/{uutinenId}/kategoriat")
+//    public String addUutinenToKategoria(@PathVariable(value = "uutinenId") Long uutinenId,
+//        @RequestParam(value = "kategoriaId") Long kategoriaId, String kategori) {
+//        uutinenService.addUutinenToKategory(uutinenId, kategoriaId, kategori);
+//        return "redirect:/uutinen";
+//     
+//    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 //    @GetMapping("/listaus/{uutinenId}")
@@ -71,16 +117,7 @@ public class listausController {
 //        return "listaus";
 //
 //    }
-      @GetMapping("/listaus/{uutinenId}")
-    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
-         model.addAttribute("lista", uutislista);
-//        model.addAttribute("news", uutinenRepository.getOne(uutinenId));
-//        model.addAttribute("uutiset", uutinenRepository.findAll());
-        // model.addAttribute("uutiset", uutinenRepository.findById(uutinenId));
-//     model.addAttribute("actor", actorService.findById(actorId));
-        //    model.addAttribute("movies", movieService.listMoviesWithout(actorId))
-        return "listaus";
-    }
+
 
     
     
@@ -97,24 +134,7 @@ public class listausController {
 //        return "uutinen";
 ////return "actor"
 //    }
-        @PostMapping("/listaus/{uutinenId}")
-    public String createUutinen(@RequestParam String name, String ingres, String kuva, String sisalto, String kirjoittajat, String kategoria) {//@PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
-        //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
-      
-        Uutinen eka = new Uutinen();
-        eka.setName(name);
-        eka.setIngres(ingres);
-        eka.setSisalto(sisalto);
-        eka.setKuva(kuva);
-        //eka.setIdentifier(uutinenId);
-        eka.setAika(LocalDateTime.now());
-        eka.setKirjoittajat(kirjoittajat);
-        eka.setKategoria(kategoria);  
-        this.uutislista.add(eka);
-        uutinenRepository.save(eka);
 
-        return "redirect:/listaus/*";
-    }
     
 //        if (!name.trim().isEmpty() && !type.trim().isEmpty()) {
 //            this.items.add(new Item(name.trim(), type.trim()));
@@ -154,7 +174,7 @@ public class listausController {
 //        return "redirect:/listaus/*";
 //    }
 
-}
+
    
     
 //

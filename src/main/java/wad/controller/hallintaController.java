@@ -12,37 +12,43 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import wad.domain.Kategoriat;
 import wad.domain.Uutinen;
+import wad.repository.KategoriatRepository;
 import wad.repository.UutinenRepository;
 
 @Controller
 public class hallintaController {
 
 //    @Autowired
-//    private UutinenService uutinenService;
-//    
+//    private UutinenService uutinenService;   
+    @Autowired
+    private KategoriatRepository kategoriatRepository;
     @Autowired
     private UutinenRepository uutinenRepository;
   
  //luodaan malliuutinen ja  listataan kaikki  olemassa olevat uutiset tietokannasta ja palautetaan index sivulle
     @GetMapping("/")
-    public String list(Model model) {
-      
-                
-        if (uutinenRepository.findAll().isEmpty()) {//size o     ==null?
+    public String list(Model model) {         
+        if (uutinenRepository.findAll().isEmpty()) {//size==0  ==null?
             Uutinen malli = new Uutinen();
+            Kategoriat m =new Kategoriat("teeeeeeeeeeeestikateg");
+            m.setName("testigategoria");
             malli.setName("Kumpulassa opiskeltiin ahkerasti");
             malli.setIngres("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
             malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
             malli.setKuva("tähän pitäis saada vielä kuva");
+            malli.setKategori("PAIKALLISUUTISET");
+            //malli.setKategoria(new Kategoriat("teeeeeeeeeeeeeestaaaaaaaaaaaaaaaktegooooooriaa"));
             malli.setAika(LocalDateTime.now());
             malli.setKirjoittajat("Martta Meikäläinen");
-            malli.setKategoria("Paikallisuutiset");
+            kategoriatRepository.save(m);   
             uutinenRepository.save(malli);
         }
    
-        model.addAttribute("uutiset", uutinenRepository.findAll());   
-        // model.addAttribute("uutiset", uutinenService.list());
+        model.addAttribute("uutiset", uutinenRepository.findAll());  
+        model.addAttribute("kategoriat", kategoriatRepository.findAll());
+       // model.addAttribute("uutiset", uutinenService.list());
         return "index";
     }
     
@@ -52,12 +58,10 @@ public class hallintaController {
         uutinenRepository.deleteById(uutinenId);
         return "redirect:/";
     }
- 
+
     //luodaan uutinen ja lähetetään se tietokantaan
     @PostMapping("/")
-    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategoria) {// LocalDateTime time,
-        // uutinenService.add(name, ingressi, sisalto, time, kirjoittajat, kategoria); 
-        // julkaisuaika = LocalDateTime.now();
+    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria){
         
         Uutinen eka = new Uutinen();
         eka.setName(name);
@@ -66,49 +70,11 @@ public class hallintaController {
         eka.setKuva(kuva);
         eka.setAika(LocalDateTime.now());
         eka.setKirjoittajat(kirjoittajat);
-        eka.setKategoria(kategoria);
+       //eka.setKategoria(kategoria); eiiiiiiiiiiiiiiiii toimiiiiiiiiiiiiiiiiiiiiii!!!!!!!!!!!!!!!!!!!!
+       // eka.setKategoria(new Kategoriat(kategori));
+        kategoriatRepository.save(kategoria);
         uutinenRepository.save(eka);
-
-        return "redirect:/";                   //"redirect:/";samalle sivulle
+   
+        return "redirect:/";                   //  "redirect:/";  samalle sivulle
     }
-}
-
-
-//       @GetMapping("/uutinen/{uutinenId}")
-//    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
-//        model.addAttribute("uutiset", uutinenRepository.findById(uutinenId).get().getName());;
-//        return "uutinen";
-//    }
-//    
-//    @PostMapping("/")
-//    public String create(@RequestParam String name){
-//        Uutinen eka = new Uutinen();
-//        eka.setName(name);
-//        eka.getName();
-//        eka.setIngressi(ingressi);
-//        eka.getIngressi();
-//        uutinenRepository.save(eka);
-//        return "redirect:/";
-//    }
-//    @PostMapping("/actors/{actorId}/movies")
-//    public String addActorToMovie(@PathVariable(value = "actorId") Long actorId,
-//            @RequestParam(value = "movieId") Long movieId) {
-//        uutinenRepository.addActorToMovie(actorId, movieId);
-//        return "redirect:/actors";
-//    }
-//        
-//    @GetMapping("/uutinen")
-//    public String listaauutinen(Model model) {
-//        model.addAttribute("uutiset", uutinenRepository.findAll());
-////        model.addAttribute("items", itemRepository.findAll());
-//        return "uutinen";
-//    }
-//    @PostMapping("/uutinen")
-//    public String createuutinen(@RequestParam String head, String name) {
-//        Uutinen ekauutinen = new Uutinen(head);
-//        uutinenRepository.save(ekauutinen);
-//        
-////         Item i = new Item(name);
-////        itemRepository.save(i);
-//        
-//        return "redirect:/uutinen";
+  }  

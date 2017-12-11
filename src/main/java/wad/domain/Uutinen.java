@@ -1,8 +1,12 @@
 package wad.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;;
@@ -15,14 +19,20 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Uutinen extends AbstractPersistable<Long> {
 
-    
+  
     private String name;
+    @ManyToOne
+    private Kategoriat kategoria;
+   // @OneToMany(fetch=FetchType.EAGER)
+   // private List<Kategoriat>kategorialista;//= new ArrayList<>()
     private String ingres;  
     private String sisalto;
     private String kuva;
     private LocalDateTime aika;
+   // private Kirjoittaja kirjoittajat;
     private String kirjoittajat;
-    private String kategoria; 
+    //private Kategoriat kategoria;
+    private String kategori; 
     private Long identifier;
     
     
@@ -38,6 +48,30 @@ public class Uutinen extends AbstractPersistable<Long> {
         this.name= name;
         this.aika=aika;
     }
+    
+//    public void seKategoriat(List<Kategoriat> kategorialista) {
+//    this.kategorialista = kategorialista;
+//     }
+//    
+//    
+//    public List<Kategoriat> getKategoriat() {
+//        if (this.kategorialista == null) {
+//            this.kategorialista = new ArrayList<>();
+//        }
+//        return this.kategorialista;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    // private List<Uutinen>uutislista;   many to
 //  public Uutinen() {
 //    
@@ -66,4 +100,3 @@ public class Uutinen extends AbstractPersistable<Long> {
 //    }
     
 
-}
