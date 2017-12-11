@@ -26,15 +26,17 @@ public class UutinenService  {
     }
  
     @Transactional
-    public void add(String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria) {
-          Uutinen eka = new Uutinen();
+    public void add(String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori, Kategoriat kategoria) {
+        Uutinen eka = new Uutinen();
         eka.setName(name);
         eka.setIngres(ingres);
         eka.setSisalto(sisalto);
         eka.setKuva(kuva);
         eka.setAika(LocalDateTime.now());
-        eka.setKirjoittajat(kirjoittajat);
+        eka.setKirjoittaja(kirjoittaja);
+        //eka.setKirjoittajat(new Kirjoittaja(kirjoittaja));
         eka.setKategoria(new Kategoriat(kategori));
+        kategoria.getUutislista().add(eka);
         kategoriatRepository.save(kategoria);
         uutinenRepository.save(eka);
          

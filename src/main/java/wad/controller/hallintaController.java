@@ -3,6 +3,7 @@ package wad.controller;
 //import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import wad.domain.Kategoriat;
+//import wad.domain.Kirjoittaja;
 import wad.domain.Uutinen;
 import wad.repository.KategoriatRepository;
 import wad.repository.UutinenRepository;
@@ -32,16 +34,20 @@ public class hallintaController {
     public String list(Model model) {         
         if (uutinenRepository.findAll().isEmpty()) {//size==0  ==null?
             Uutinen malli = new Uutinen();
+            //Kirjoittaja haamukirjoittaja = new Kirjoittaja("Maija Meikäläinen");
             Kategoriat m =new Kategoriat("teeeeeeeeeeeestikateg");
+            //m.setUutiset(malli);
             m.setName("testigategoria");
             malli.setName("Kumpulassa opiskeltiin ahkerasti");
             malli.setIngres("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää ;)");
             malli.setSisalto("Webpalvelinohjelmoinnin kurssiprojekti teetti rutkasti töitä opiskelijoille. Opiskelijat ahersivat projektin kimpussa yötä päivää, jotta palautukseen saataisiin edes jonkinlainen projekti.Projektin laatimiseen oli harmittavan vähän aikaa ja ohjausta");
             malli.setKuva("tähän pitäis saada vielä kuva");
-            malli.setKategori("PAIKALLISUUTISET");
+            //malli.setKategori("PAIKALLISUUTISET");
+            malli.setKirjoittaja("Maija Meikäläinen");
             //malli.setKategoria(new Kategoriat("teeeeeeeeeeeeeestaaaaaaaaaaaaaaaktegooooooriaa"));
             malli.setAika(LocalDateTime.now());
-            malli.setKirjoittajat("Martta Meikäläinen");
+            //malli.setKirjoittaja(haamukirjoittaja);
+           // malli.setKirjoittajat(kirjoittajat);listalle lisääs...
             kategoriatRepository.save(m);   
             uutinenRepository.save(malli);
         }
@@ -61,15 +67,18 @@ public class hallintaController {
 
     //luodaan uutinen ja lähetetään se tietokantaan
     @PostMapping("/")
-    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria){
+    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori, Kategoriat kategoria){
         
         Uutinen eka = new Uutinen();
+        //Kirjoittaja haamu = new kirjoittaja(kirjoittaja);
         eka.setName(name);
         eka.setIngres(ingres);
         eka.setSisalto(sisalto);
         eka.setKuva(kuva);
         eka.setAika(LocalDateTime.now());
-        eka.setKirjoittajat(kirjoittajat);
+        eka.setKategoria(new Kategoriat(kategori));
+        //eka.setKirjoittajat(haamu);
+        eka.setKirjoittaja(kirjoittaja);
        //eka.setKategoria(kategoria); eiiiiiiiiiiiiiiiii toimiiiiiiiiiiiiiiiiiiiiii!!!!!!!!!!!!!!!!!!!!
        // eka.setKategoria(new Kategoriat(kategori));
         kategoriatRepository.save(kategoria);

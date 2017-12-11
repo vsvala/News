@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -23,14 +24,16 @@ public class Uutinen extends AbstractPersistable<Long> {
     private String name;
     @ManyToOne
     private Kategoriat kategoria;
-   // @OneToMany(fetch=FetchType.EAGER)
+   //@OneToMany(fetch=FetchType.EAGER)
    // private List<Kategoriat>kategorialista;//= new ArrayList<>()
-    private String ingres;  
+    private String ingres;   
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Kirjoittajat> kirjoittajat;
     private String sisalto;
     private String kuva;
     private LocalDateTime aika;
-   // private Kirjoittaja kirjoittajat;
-    private String kirjoittajat;
+    //private Kirjoittaja kirjoittaja;
+    private String kirjoittaja;
     //private Kategoriat kategoria;
     private String kategori; 
     private Long identifier;

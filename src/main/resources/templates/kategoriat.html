@@ -5,184 +5,26 @@
         <meta charset="UTF-8" />
         <title>kategoriat</title>
     </head>
-    <body><!--  
-        <div>
-            <a href="kategoriat.html">kategoriat</a> 
+    <body> 
+               <div>
             <ul>
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
-                     font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="uutinen : ${uutiset}">
-                      <a th:href="@{/uutinen/{uutinenId}/kategoriat(uutinenId=${uutinen.id})}" th:text="${uutinen.kategori}">uutinen kategoria</a>
-                   <a th:href="@{/uutinen/{uutinenId}/kategoriat(uutinenId=${uutinen.id})}" th:text="${uutinen.kategori}">uutinen kategoria</a>
-        
+                     font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="kategoria : ${kategoriat}">
+                    <a th:href="@{/kategoriat/{kategoriaId}(kategoriaId=${kategoria.id})}" th:text="${kategoria.name}">uutinen kategoria</a>
                 </li>
             </ul>
-        </div>   
-        -->
+        </div> 
+
         <h2>Existing Uutiset</h2>
-       <ol> 
-            <!--      
+    <ol>
             <li th:each="uutinen: ${uutiset}">
-                 <span th:text="${uutinen.name}">uutinen name</span>   </li>-->
-            <li th:each="uutinen : ${uutiset}">
-                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-
-            </li>
-        </ol>  
-         
-        
-        
-        
-        
-        
-     <p th:each="kategoria: ${kategoriat}" th:text="${kategoria}"></p><br/>
-   <p th:each="kategoria : ${kategoriat}" th:value="${kategoria.id}" th:text="${kategoria.name}"></p><b
-        
-        
-         <!--
-        <ol>  
-            <li th:each="kategoriat : ${kategoriat}">
-                <a th:href="@{/kategoriat/{kategoriatId}(kategoriatId=${kategoriat.id})}" th:text="${kategoria.name}">actor name</a>     <!--tässä pitäis olla kategoria.name 
- 
-             <form th:action="@{/actors/{actorId}(actorId=${actor.id})}" th:method="DELETE">
-                    <input type="submit" value="Remove" th:id="${'remove-' + actor.id}"/>
-                </form><br/> 
- 
-                Known for:<br/>
-                <ul>
-                    <li th:each="uutinen : ${kategoriat.uutinen}" th:text="${uutinen.name}">uutinen name</li>
-                </ul>
-            </li>
-        </ol> -->
- 
-        <div><a href="/uutinen">Uutinen</a></div>
-        
-      
-        <h1>Paikallisuutiset (Helsinki)</h1>
-        <p>
-            tähän pitäis tulla listaus paikallisuutisiin kuuluvista uutisista
-        </p>
-        <div>
-            <ol>
-
-                <li th:each="uutinen : ${uutiset}">
-                    <a th:href="@{kategoria/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen}">uutinen name</a>
-                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-                </li>
-                
-                <li th:each="kategoria : ${kategoriat}">
-                    <a th:href="@{kategoria/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${kategoriat.name}">uutinen name</a>
-                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-                </li>
-            </ol>
-        </div><br/>    
-        <h1>Kotimaanuutiset</h1>
-        <p>
-            tähän pitäis tulla listaus paikallisuutisiin kuuluvista uutisista
-        </p>
-        <div>
-            <ol>
-
-                <li th:each="uutinen : ${uutiset}">
-                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-                    <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-                </li>
-            </ol>
-        </div><br/>    
-
-      
-            tähän pitäis tulla listaus paikallisuutisiin kuuluvista uutisista
-        </p>
-        <div>
-
-        <div>
-            <h1>Ulkomaan uutiset</h1>     
-            <p>
-                listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
-                Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-                näihin  linkit konkreettiseen uutiseen. 
-            </p>
-
-            <ol>
-
-                <li th:each="uutinen : ${uutiset}">
-                    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-                    <!--Tähän pitäis saada pvm mukaan
-                    kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-                </li>
-            </ol>
-        </div> <br/><br/> 
-
-          <div>
-        <h1>Kulttuuri</h1>     
-        <p>
-            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
-            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-            näihin  linkit konkreettiseen uutiseen. 
-        </p>
-
-        <ol>
-
-            <li th:each="uutinen : ${uutiset}">
-                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-                <!--Tähän pitäis saada pvm mukaan
-                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                <h2> <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}"<span th:text="${uutinen.name}">name</span></a></h2>
+                <span th:text="${uutinen.kuva}">type</span><br/>
+                <span th:text="${uutinen.aika}">type</span><br/><br/>
             </li>
         </ol>
-        </div> <br/><br/
-
-     <div>
-        <h1>Urheilu</h1>     
-        <p>
-            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
-            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-            näihin  linkit konkreettiseen uutiseen. 
-        </p>
-
-        <ul>
-
-            <li th:each="uutinen : ${uutiset}">
-                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-                <!--Tähän pitäis saada pvm mukaan
-                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-            </li>
-        </ul>
-        </div> <br/><br
-
-  <div>
-        <h1>politiikka</h1>     
-        <p>
-            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
-            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-            näihin  linkit konkreettiseen uutiseen. 
-        </p>
-
-        <ul>
-
-            <li th:each="uutinen : ${uutiset}">
-                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-                <!--Tähän pitäis saada pvm mukaan
-                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-            </li>
-        </ul>
-        </div> <br/><br
-<div>
-        <h1>talous</h1>     
-        <p>
-            listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
-            Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
-            näihin  linkit konkreettiseen uutiseen. 
-        </p>
-
-        <ul>
-
-            <li th:each="uutinen : ${uutiset}">
-                <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-                <!--Tähän pitäis saada pvm mukaan
-                kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
-            </li>
-        </ul>
-            </div> <br/><br>
-
+       <li  th:each="kategoria : ${kategoriat}" th:text="${kategoria.name}">uutinen kategoria</li>
+         <li  th:each="kategoria : ${kategoriat}" th:text="${kategoria.uutiset}">uutinen kategoria</li>
             <div><a href="/">Lisää uusi uutinen</a></div>
              <div><a href="/listaus">Listaa uutisia</a></div>
 

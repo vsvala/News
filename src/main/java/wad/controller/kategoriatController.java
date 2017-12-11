@@ -29,19 +29,26 @@ public class kategoriatController {
     @Autowired
     private KategoriatRepository kategoriaRepository;
 
-//       @GetMapping("/kategoriat")
-//    public String listaa(Model model) {
-//     //   model.addAttribute("uutiset", uutinenRepository.findAll());
-//        model.addAttribute("kategoriat", uutinenRepository.findAll());
-//        //model.addAttribute("kategoriat", kategoriaRepository.findAll());
-////        model.addAttribute("uutiset", kategoriaRepository.findAll());
-//        // model.addAttribute("kate", kategoriaRepository.findAll());
-//        //model.addAttribute("actors", actorService.list());
-//        return "kategoriat";
-//    }
-//    
+       @GetMapping("/kategoriat")
+    public String listaa(Model model) {
+              Kategoriat kategoria = new Kategoriat();
+           model.addAttribute("kateg", kategoria.getUutiset());
+         model.addAttribute("kategoriat", kategoria.getName());
+         model.addAttribute("uutiset", uutinenRepository.findAll());
+        model.addAttribute("kategoriat", kategoriaRepository.findAll());
+        //model.addAttribute("kategoriat", kategoriaRepository.findAll());
+//        model.addAttribute("uutiset", kategoriaRepository.findAll());
+        // model.addAttribute("kate", kategoriaRepository.findAll());
+        //model.addAttribute("actors", actorService.list());
+        return "kategoriat";
+    }
+    
     @GetMapping("/kategoriat/{kategoriatId}")
     public String list(Model model) {
+          Kategoriat kategoria = new Kategoriat();
+           model.addAttribute("kateg", kategoria.getUutiset());
+         model.addAttribute("kategoriat", kategoria.getName());
+          model.addAttribute("uutiset", uutinenRepository.findAll());
      //   model.addAttribute("uutiset", uutinenRepository.findAll());
 //        model.addAttribute("kategoriat", uutinenRepository.findAll());
         model.addAttribute("kategoriat", kategoriaRepository.findAll());
@@ -50,13 +57,12 @@ public class kategoriatController {
         //model.addAttribute("actors", actorService.list());
         return "kategoriat";
     }
-
-    @PostMapping("/kategoriat/{kategoriatId}")
+//
+  @PostMapping("/kategoriat/{kategoriatId}")
     public String add(@RequestParam String kategori) {
         Kategoriat kategoria = new Kategoriat();
         kategoria.setName(kategori);
-
-        kategoria.setName("testi");
+       // kategoria.setName("testi");
         kategoriaRepository.save(kategoria);
         return "redirect:/kategoriat";
     }

@@ -22,8 +22,7 @@ import wad.repository.UutinenRepository;
 
 @Controller
 public class listausController {
- private List<Uutinen>uutislista;
-
+    private List<Uutinen> uutislista;
 
     public listausController() {
         this.uutislista = new ArrayList<>();
@@ -32,21 +31,23 @@ public class listausController {
     @Autowired
     private UutinenService uutinenService;
     @Autowired
-    private KategoriatRepository kategoriatRepository; 
+    private KategoriatRepository kategoriatRepository;
     @Autowired
-    private UutinenRepository uutinenRepository;      
- 
+    private UutinenRepository uutinenRepository;
 
     @GetMapping("/listaus")
     public String list(Model model) {
         Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "aika");
         model.addAttribute("uutiset", uutinenRepository.findAll(pageable));
+        
         return "listaus";
-    }    
-          @GetMapping("/listaus/{uutinenId}")
+    }
+
+    @GetMapping("/listaus/{uutinenId}")
     public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
-         model.addAttribute("lista", uutislista);
-           model.addAttribute("kategoriat", kategoriatRepository.findAll());
+        model.addAttribute("lista", uutislista);
+        model.addAttribute("kategoriat", kategoriatRepository.findAll());
+        model.addAttribute("news", uutinenRepository.findAll());
 //        model.addAttribute("news", uutinenRepository.getOne(uutinenId));
 //        model.addAttribute("uutiset", uutinenRepository.findAll());
         // model.addAttribute("uutiset", uutinenRepository.findById(uutinenId));
@@ -54,30 +55,30 @@ public class listausController {
         //    model.addAttribute("movies", movieService.listMoviesWithout(actorId))
         return "listaus";
     }
-            @PostMapping("/listaus/{uutinenId}")
-    public String createUutinen(@RequestParam String name, String ingres, String kuva, String sisalto, String kirjoittajat, String kategori, Kategoriat kategoria) {//@PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
-        //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
-      
-        Uutinen eka = new Uutinen();
-        eka.setName(name);
-        eka.setIngres(ingres);
-        eka.setSisalto(sisalto);
-        eka.setKuva(kuva);
-        //eka.setIdentifier(uutinenId);
-        eka.setAika(LocalDateTime.now());
-        eka.setKirjoittajat(kirjoittajat);
-        eka.setKategori(kategori);  
-        this.uutislista.add(eka);
-      
-        kategoriatRepository.save(kategoria);
-        uutinenRepository.save(eka);
-           
-  
-      //  return "redirect:/listaus/*";
-   
-        return "redirect:/";                   //  "redirect:/";  samalle sivulle
-    }
-      }
+//
+//    @PostMapping("/listaus/{uutinenId}")
+//    public String createUutinen(@RequestParam String name, String ingres, String kuva, String sisalto, String kirjoittajat, String kategori, Kategoriat kategoria) {//@PathVariable(value = "actorId") Long uutinenId) {  // Integer julkaisuaika,, 
+//        //uutinenService.add(name, ingressi,sisalto,julkaisuaika,kirjoittajat,kategoria);
+//
+//        Uutinen eka = new Uutinen();
+//        eka.setName(name);
+//        eka.setIngres(ingres);
+//        eka.setSisalto(sisalto);
+//        eka.setKuva(kuva);
+//        //eka.setIdentifier(uutinenId);
+//        eka.setAika(LocalDateTime.now());
+//        eka.setKirjoittajat(kirjoittajat);
+//        //eka.setKategoria(new Kategoriat(kategori));
+//       // eka.setKategori(kategori);
+//        this.uutislista.add(eka);
+//
+//        kategoriatRepository.save(kategoria);
+//        uutinenRepository.save(eka);
+//
+//        //  return "redirect:/listaus/*";
+//        return "redirect:/listaus";                   //  "redirect:/";  samalle sivulle
+//    }
+}
 //     
 //     @PostMapping("/listaus/{uutinenId}")
 //    public String add(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria) {
@@ -93,16 +94,7 @@ public class listausController {
 //        return "redirect:/uutinen";
 //     
 //    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 //    @GetMapping("/listaus/{uutinenId}")
 //    public String view(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {
 //      // model.addAttribute("news", uutinenRepository.getOne(uutinenId));
@@ -117,13 +109,6 @@ public class listausController {
 //        return "listaus";
 //
 //    }
-
-
-    
-    
-    
-    
-    
 //        @GetMapping("/uutinen/{uutinenId}")
 //    public String viewByKategoria(Model model, @PathVariable(value = "uutinenId") Long uutinenId, @RequestParam String name, String time) {
 //        model.addAttribute("news", uutinenRepository.getOne(uutinenId));
@@ -134,14 +119,9 @@ public class listausController {
 //        return "uutinen";
 ////return "actor"
 //    }
-
-    
 //        if (!name.trim().isEmpty() && !type.trim().isEmpty()) {
 //            this.items.add(new Item(name.trim(), type.trim()));
 //        }
- 
-    
-    
 //    
 //    
 //        @PostMapping("/listaus")
@@ -173,10 +153,6 @@ public class listausController {
 //
 //        return "redirect:/listaus/*";
 //    }
-
-
-   
-    
 //
 //    @PostMapping("/")
 //    public String create(@RequestParam String name) {
@@ -185,8 +161,6 @@ public class listausController {
 //        return "redirect:/";
 //    }
 //}
-
-
 //    @GetMapping("/uutinen/{uutinenId}")
 //    
 //    public String listaaUutinen(Model model, @PathVariable(value = "uutinenId") Long uutinenId) {// (value="uutinenId") {
@@ -206,33 +180,3 @@ public class listausController {
 //       return "uutinen";
 // 
 //    }
-//    
-//       @GetMapping("/actors/{actorId}")
-//    public String view(Model model, @PathVariable(value = "actorId") Long actorId) {
-//        model.addAttribute("actor", actorService.findById(actorId));
-//        model.addAttribute("movies", movieService.listMoviesWithout(actorId));
-//        return "actor";
-//    }
-//    
-//    public Actor findById(Long actorId) {
-//        return actorRepository.getOne(actorId);
-//    }
-//    
-//
-//    @GetMapping("/uutinen/{uutinenId}")
-//    public String yksiUutinen(Model model, @PathVariable String uutinenId) {// (value="uutinenId")
-//       model.addAttribute("uutiset", uutinenRepository.toString());
-////      // model.addAttribute("news", uutinenRepository.findById(uutinenId.longValue()).get().getName());
-//    model.addAttribute("uutiset", uutinenRepository.findAll());
-//////          model.addAttribute("news", uutinenRepository.findById(uutinenId).get().getSisalto());
-//////            // model.addAttribute("news", uutinenRepository.findById(uutinenId).get().getJulkaisuaika());
-//////                model.addAttribute("news", uutinenRepository.findById(uutinenId).get().getKirjoittajat());
-//////                   model.addAttribute("news", uutinenRepository.findById(uutinenId).get().getKategoria());
-////    
-////       
-////           //model.addAttribute("uutiset", uutinenRepository.findById(uutinenId));
-////       //model.addAttribute("uutiset", uutinenRepository.getOne(uutinenId).getName());
-//        return "uutinen";
-//    }   
- 
- 

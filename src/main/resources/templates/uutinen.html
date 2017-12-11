@@ -24,7 +24,7 @@
             <p>Julkaisuaika:</p>
             <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.aika}"></p><br/>
             <p>kirjoittaja:</p>
-            <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kirjoittajat}"></p><br/>
+            <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.kirjoittaja}"></p><br/>
             <p>kategoria:</p>   
             <p th:each="kategoria: ${kategoriat}"  th:value="${kategoria.id}" th:text="${kategoria.name}"></p><br/>
                <!--tähän pitäis saada hakeen yksittäinen kategorian nimi ei kikkia -->

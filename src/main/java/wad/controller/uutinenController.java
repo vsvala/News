@@ -55,8 +55,8 @@ public class uutinenController {
  
     
      @PostMapping("/uutinen/{uutinenId}")
-    public String add(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria) {
-        uutinenService.add(name, ingres, sisalto, kuva, kirjoittajat, kategori, kategoria);
+    public String add(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori, Kategoriat kategoria) {
+        uutinenService.add(name, ingres, sisalto, kuva, kirjoittaja, kategori, kategoria);
         return "redirect:/";
     }
  
