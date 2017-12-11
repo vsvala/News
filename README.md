@@ -2,8 +2,8 @@
 Web-palvelinohjelmointi, harjoitustyö, syksy 2017  Virva svala
 
 Aiheen kuvaus:
-Verkossa toimiva uutissivuston sovellus sekä uutisten luomiseen ja muokkaamiseen tarkoitettu hallintapaneeli.  
-Projeksti on toteutettu kurssin työvälineillä:(Java, Spring, Heroku, Herokun PostreSQL, ..). 
+
+HYVIN KESKENERÄINEN Verkossa toimiva uutissivuston sovellus sekä uutisten luomiseen ja muokkaamiseen tarkoitettu hallintapaneeli. Projeksti on toteutettu kurssin työvälineillä:(Java, Spring, Heroku, Herokun PostreSQL, ..). 
 
 Kirjautuminen  käyttis: testi,  salasana: testi 
 
