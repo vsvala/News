@@ -65,41 +65,5 @@ public class Uutinen extends AbstractPersistable<Long> {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   // private List<Uutinen>uutislista;   many to
-//  public Uutinen() {
-//    
-//      } 
-// public Uutinen( String name,  String sisalto,  LocalDateTime julkaisuaika, String kirjoittajat, String kategoria) {
-//     this.julkaisuaika = LocalDateTime.now();
-//     this.
-//     
-//      }    
-// public Uutinen(LocalDateTime julkaisuaika) {
-//        this.julkaisuaika = LocalDateTime.now();
-//      } 
-//    public void setTime() {
-//        this.julkaisuaika = LocalDateTime.now();
-//        
-//    }
-     
-  
-    
-   // public Uutinen() {
-    //    this.messageDate = LocalDateTime.now();
-   // }
-////
-//     public Uutinen findById(Long uutinenId) {
-//        return uutinenRepository.getOne(uutinenId);
-//    }
-    
+   
 

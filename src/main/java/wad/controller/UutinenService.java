@@ -40,35 +40,7 @@ public class UutinenService  {
         kategoriatRepository.save(kategoria);
         uutinenRepository.save(eka);
          
-    }
-    
-//        @PostMapping("/")
-//    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittajat, String kategori, Kategoriat kategoria){
-//
-//        Uutinen eka = new Uutinen();
-//        eka.setName(name);
-//        eka.setIngres(ingres);
-//        eka.setSisalto(sisalto);
-//        eka.setKuva(kuva);
-//        eka.setAika(LocalDateTime.now());
-//        eka.setKirjoittajat(kirjoittajat);
-//        eka.setKategoria(kategoria); 
-//        kategoriatRepository.save(kategoria);
-//        uutinenRepository.save(eka);
-//                                     
-//        //eka = uutinenRepository.getOne(uutinenId);
-//       // kategoria = kategoriatRepository.getOne(kategoriaId);
-//        eka.setKategoria(kategoria); 
-//     //tähän if lause tsekkaan onko kategoria jo olemassa,,,,ja lisöö jos ei ,,
-//        kategoria.setName(kategori);
-//       // kategoria.addUutinen(eka);
-//       // kategoria.setName("kulttuuri");
-//             kategoriatRepository.save(kategoria);
-//             uutinenRepository.save(eka);
-//   
-//        return "redirect:/";                   //  "redirect:/";  samalle sivulle
-//    }
-//    
+    }  
  
     @Transactional
     public void addUutinenToKategory(Long uutinenId, Long kategoriaId, @RequestParam String kategori) {
@@ -78,13 +50,9 @@ public class UutinenService  {
         uutinen.getKategoria().setName(kategori);
         kategoria.getUutiset().add(uutinen);
         
-//        eka.setKategoria(kategoria); 
-//     //tähän if lause tsekkaan onko kategoria jo olemassa,,,,ja lisöö jos ei ,,
-//        kategoria.setName(kategori);
-//       // kategoria.addUutinen(eka);
-//       // kategoria.setName("kulttuuri");
+
 //             kategoriatRepository.save(kategoria);
-//             uutinenRepository.save(eka);
+//             uutinenRepository.save(uutinen);
     }
  
     public Uutinen findById(Long uutinenId) {

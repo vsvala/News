@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8" />
-        <title>Hallinta</title>
+        <title>Uutinen</title>
     </head>
     <body style="background-color:darkseagreen">
 
-        <!--  kategoriat listataan navigaatioksi
-      --> 
- 
+        <!--  kategoriat listataan navigaatioksi--> 
+
         <div>
             <ul>
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
@@ -31,13 +30,17 @@
             Sisältö:<textarea type="text" name="sisalto" rows="20" cols="100"></textarea><br/>
             <!-- Julkaisuaika: <input type="date" name="aika"></input><br/> -->
             Kuva: <input type="text" name="kuva"/><br/>
-            Kirjoittajat <input type="text" name="kirjoittajat"/><br/>
+            Kirjoittajat <input type="text" name="kirjoittaja"/><br/>
             Kategoria <input type="text" name="kategori"/><br/>
             <input type="submit" value="Lisää"/>
         </form>
 
 
-        <h2>Lisää kategoria uutiselle</h2>
+        <h2>Lisätyt uutiset</h2>
+         <p>
+          Liitä uutinen kategoriaan:<br/>  
+        </p>
+
 
         <ol>
             <li th:each="uutinen : ${uutiset}">
@@ -45,9 +48,7 @@
 
                 <div    <!--th:if="${uutinen.kategoria} == null">-->
                     -- Unassigned. Lisää kategoria:<br/>
-                  <!--   <form th:action="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" method="POST"> -->
                     <form th:action="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" method="POST">
-                        
                         <select name="kategoriaId">
                             <option th:each="kategoria : ${kategoriat}" th:value="${kategoria.id}" th:text="${kategoria.name}"></option>
                         </select>
@@ -57,11 +58,10 @@
         </ol>   
 
         <h2>Uutisten poistaminen</h2>
-        <!--listaa ja poistaa uuutisen id:n perusteella                                  "@{/uutinen/{uutinenId}/kategoriat(uutinenId=${uutinen.id})}" -->
+        
+        
+         <!--listaa ja poistaa uuutisen id:n perusteella -->
         <ol> 
-            <!--      
-            <li th:each="uutinen: ${uutiset}">
-                 <span th:text="${uutinen.name}">uutinen name</span>   </li>-->
             <li th:each="uutinen : ${uutiset}">
                 <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
 
@@ -70,11 +70,11 @@
                 </form><br/>
             </li>
         </ol>  
-        
-        
+
+
 
         <div><a href="/listaus">Uutisten listaaminen</a></div>
-      
+
     </body>
 
 </html>

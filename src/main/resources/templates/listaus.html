@@ -6,28 +6,20 @@
         <title>Listaus</title>
     </head>
     <body>
-          <div>
+        
+          <!-- navigaatio -->
+         <div>
             <ul>
                 <li  style="display:inline; padding-right: 20px; text-transform:uppercase; font-weight:bold;
                      font-size:2em;font-family:sans-serif;word-spacing:30px;" th:each="kategoria : ${kategoriat}">
                     <a th:href="@{/kategoriat/{kategoriaId}(kategoriaId=${kategoria.id})}" th:text="${kategoria.name}">uutinen kategoria</a>
                 </li>
             </ul>
-        </div> 
+        </div>   
 
-
+        
+    <!-- listaa 5 uusinta -->
         <h1>Uusimmat uutiset (5kpl) (otsikko ingressi ja kuva) jäsrjestettynä julkaisuajan perusteella</h1>
-
-        <!--
-      <div>
-          <ol>
-
-              <li th:each="uutinen : ${uutiset}">
-                  <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-        <!--kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a> 
-</li>
-</ol>           
-</div><br/> -->   
 
         <ol>
             <li th:each="uutinen: ${uutiset}">
@@ -38,6 +30,7 @@
             </li>
         </ol>
 
+             <!-- kesken-->
         <div>
             <h1>Luetuimmat: (nimi ja pvm)</h1>
 
@@ -48,66 +41,31 @@
                     <br/>
                 </li>
             </ul>
-            <br/>  
-
-
-
-
-
-
-            <ol>
-                <li th:each="uutinen: ${lista}">
-                    <span th:text="${uutinen.nimi}">Esimerkkihenkilö</span>
-                </li>
-            </ol>
+                
             <p>
-                listaa  edellisen viikon aikana kertyneiden lukumäärien perusteella ...oisko joku cookies/evästejuttu  
-                Muut listaukset näyttävät oletuksena uutisen otsikon sekä julkaisupäivämäärän
+                pitäisi listata edellisen viikon aikana kertyneiden lukumäärien perusteella ja näyttää otsikon sekä julkaisupäivämäärän
                 näihin  linkit konkreettiseen uutiseen. 
             </p>
-            <!--
-                       <ol>
-           
-                           <li th:each="uutinen : ${uutiset}">
-                               <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.name}">uutinen name</a>
-            <!--Tähän pitäis saada pvm mukaan
-            kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${uutinen.kategoria}">uutinen name</a>  
-        </li>
-    </ol>
-</div> <br/><br/> -->
-
-
-
+    
+   <!-- ei toimi vielä-->
             <div>
-                <h2>Uutiset kategorioittain??? (kategoria nimi ja pvm)</h2>     
+                <h2>Uutiset kategorioittain(kategoria nimi ja pvm)</h2>     
 
-                <!--<h2 th:text="${uutiset}">uutisen nimi</h2>
-              <h2 th:text="${news}">uutisen nimi</h2> -->
-
-                <div> <!--     -->
-                 <p th:each="kategoria: ${kategoriat}"  th:value="${kategoria.id}" th:text="${kategoria.name}"></p><br/>
-                  <!--    <h1 th:each="uutinen : ${news}" th:value="${uutinen.id}" th:text="${uutinen.kategori}"></h1>
-                    <h1 th:each="uutinen : ${uutiset}" th:value="${uutinen.id}" th:text="${uutinen.kategori}"></h1>
-                    <p th:each="uutinen : ${uutiset}"  th:value="${uutinen.id}" th:text="${uutinen.name}"></p>
-                    <p th:each="uutinen : ${news}"  th:value="${uutinen.id}" th:text="${uutinen.name}"></p> 
-                    <p th:each="uutinen : ${news}"  th:text="${uutinen.aika}"></p>-->
-                </div>
-
-                <ol>
-                    <li th:each="uutinen: ${uutiset}">
-                        <span th:text="${uutinen.name}">name</span> (<span th:text="${uutinen.aika}">type</span>)
-                    </li>
-                      <!-- <li  th:each="kategoria : ${kategoriat}" th:text="${kategoria.name}">uutinen kategoria</li>-->
-                </ol>
-
-
-
-
+             
+            <ul>
+                <li th:each="uutinen: ${uutiset}">
+                    <h3><a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}"<span th:text="${uutinen.name}">name</span></a></h3>
+                    <span th:text="${uutinen.aika}">type</span>
+                    <br/>
+                </li>
+            </ul>
+                
+                <li  th:each="kategoria : ${kategoriat}" th:text="${kategoria.name}">uutinen kategoria</li>
                 <ol>
                     <li th:each="kategoria : ${kategoriat}">
                         <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinen.id})}" th:text="${kategoria.name}">uutinen name</a>
-                        <!--Tähän pitäis saada pvm mukaan
-                        kommentti    <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinenid})}" th:text="${uutinen.kategoria}">uutinen name</a>  -->
+                        Tähän pitäis saada pvm mukaan
+                           <a th:href="@{/uutinen/{uutinenId}(uutinenId=${uutinenid})}" th:text="${uutinen.kategoria}">uutinen name</a> 
                     </li>
                 </ol>
             </div> <br/><br/>
