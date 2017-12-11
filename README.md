@@ -9,7 +9,7 @@ Listaus tyypillisimmistä (max 5) käyttötapauksista
 Käyttäjä voi lisätä uutisia hallintapaneelin kautta, ja ohjelma listaa niistä 5 uusinta osittain näkyviin.
 Kayttäjä voi poistaa haluamansa uutisen.
 Käyttäjä voi klikata ja valita uutisen luettavaksi kokonaan.
-Käyttäjä voi tarkastella uutisia myös kategorian tai luetuimman uutsen mukaan. (voi käyttää esim. user storyjä)
+Käyttäjä voi tarkastella uutisia myös kategorian tai luetuimman uutsen mukaan. 
 
 
 Tehdyt ominaisuudet:
