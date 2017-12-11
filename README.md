@@ -27,7 +27,7 @@ Kuvan tuonti ei vielä toimi.
 Uutisten listaus luettujen perusteella ei toimi
 Uutisten listaus kategorioittain ei toimi
 Testejä ei ole vielä tehty
-Kirjoitutmista ja kirjoittajien lisäystä ei ole vielä hoidettu kuntoon.
+Kirjautumista ja kirjoittajien lisäystä ei ole vielä hoidettu kuntoon.
 Uutisen poisto toimii, muttei poista vielä kategoriaa
 
 
