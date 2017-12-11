@@ -5,14 +5,16 @@ Aiheen kuvaus:
 
 HYVIN KESKENERÄINEN Verkossa toimiva uutissivuston sovellus sekä uutisten luomiseen ja muokkaamiseen tarkoitettu hallintapaneeli. Projeksti on toteutettu kurssin työvälineillä:(Java, Spring, Heroku, Herokun PostreSQL, ..). 
 
-Kirjautuminen  käyttis: testi,  salasana: testi 
+KIRJAUTUMINEN:  käyttis: testi,  salasana: testi 
 
 Listaus tyypillisimmistä (max 5) käyttötapauksista
-Käytäjä voi kirjautua  (kk:testi, ss:testi) sisään nähdäkseen hallintapaneelin ja lisätäkseen uutisia
-Käyttäjä voi lisätä uutisia hallintapaneelin kautta, ja ohjelma listaa niistä 5 uusinta osittain näkyviin.
-Kayttäjä voi poistaa haluamansa uutisen.
-Käyttäjä voi klikata ja valita uutisen luettavaksi kokonaan.
-Käyttäjä voi tarkastella uutisia myös kategorian tai luetuimman uutsen mukaan. 
+
+*   Käytäjä voi kirjautua  (kk:testi, ss:testi) sisään nähdäkseen hallintapaneelin ja lisätäkseen uutisia
+*   Käyttäjä voi lisätä uutisia hallintapaneelin kautta
+*   käyttäjä voi listata uutisia, joloin saa näkyviin 5 uusinta uutista (otsikko, ingressi, kuva)
+*   Kayttäjä voi poistaa haluamansa uutisen.
+*   Käyttäjä voi klikata ja valita uutisen luettavaksi kokonaan.
+*   Käyttäjä voi tarkastella uutisia myös kategorian tai viikon luetuimman uutisen mukaan. 
 
 
 Tehdyt ominaisuudet:
