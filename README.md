@@ -10,7 +10,15 @@ Käyttäjä voi lisätä uutisia hallintapaneelin kautta, ja ohjelma listaa niis
 Kayttäjä voi poistaa haluamansa uutisen.
 Käyttäjä voi klikata ja valita uutisen luettavaksi kokonaan.
 Käyttäjä voi tarkastella uutisia myös kategorian tai luetuimman uutsen mukaan. (voi käyttää esim. user storyjä)
-Käytetyn tietokannan skeema
-Käyttöohje
-Asennusohje
-Puuttuvat ominaisuudet ja muut puutteet
+
+
+
+Puuttuvat ominaisuudet ja muut puutteet:
+
+Kuvan tuonti ei vielä toimi.
+Uutisten listaus luettujen perusteella ei toimi
+Uutisten listaus kategorioittain ei toimi
+Testejä ei ole vielä tehty
+Kirjoitutmista ja kirjoittajien lisäystä ei ole vielä hoidettu kuntoon.
+
+
