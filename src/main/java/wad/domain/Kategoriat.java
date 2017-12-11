@@ -59,6 +59,6 @@ public class Kategoriat extends AbstractPersistable<Long> {
  
     public void setUutislista(List<Uutinen> uutiset) {
         this.uutiset = uutiset;
-    }
  
+}
 }
