@@ -66,13 +66,21 @@
             <scope>test</scope>
         </dependency>
             
-        <!-- TMC -->
+        <!-- Spring Security - -->
         <dependency>
             <groupId>fi.helsinki.cs.tmc</groupId>
             <artifactId>edu-test-utils</artifactId>
             <version>0.4.2</version>
             <scope>test</scope>
         </dependency>
+        
+                <!-- TMC -->
+        <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+        
         
         <!-- FluentLenium -->
         <dependency>

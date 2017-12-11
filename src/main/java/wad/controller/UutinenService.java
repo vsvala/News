@@ -55,6 +55,11 @@ public class UutinenService  {
 //             uutinenRepository.save(uutinen);
     }
  
+//    public void poistaKAtegoria(Long kategoriaId) {
+//     kategoriatRepository.deleteById(kategoriaId);
+//      }
+    
+    
     public Uutinen findById(Long uutinenId) {
         return uutinenRepository.getOne(uutinenId);
    

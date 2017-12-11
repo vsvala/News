@@ -22,8 +22,8 @@ import wad.repository.UutinenRepository;
 @Controller
 public class hallintaController {
 
-//    @Autowired
-//    private UutinenService uutinenService;   
+    @Autowired
+    private UutinenService uutinenService;   
     @Autowired
     private KategoriatRepository kategoriatRepository;
     @Autowired
@@ -60,7 +60,7 @@ public class hallintaController {
     //poistetaan id:n mukainen uutinen tietokannasta ja uudelleen ohjataan indeksisivulle
     @DeleteMapping("/uutinen/{uutinenId}")
     public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
-        uutinenRepository.deleteById(uutinenId);
+        kategoriatRepository.deleteById(uutinenId);
         return "redirect:/";
     }
 
