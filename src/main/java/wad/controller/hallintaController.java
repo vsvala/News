@@ -22,8 +22,7 @@ import wad.repository.UutinenRepository;
 @Controller
 public class hallintaController {
 
-    @Autowired
-    private UutinenService uutinenService;   
+  
     @Autowired
     private KategoriatRepository kategoriatRepository;
     @Autowired
@@ -61,12 +60,14 @@ public class hallintaController {
     @DeleteMapping("/uutinen/{uutinenId}")
     public String remove(@PathVariable(value = "uutinenId") Long uutinenId) {
         kategoriatRepository.deleteById(uutinenId);
+       // uutinenRepository.deleteById(uutinenId);
+
         return "redirect:/";
     }
 
     //luodaan uutinen ja lähetetään se tietokantaan
     @PostMapping("/")
-    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori, Kategoriat kategoria){
+    public String createUutinen(@RequestParam String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori){
         
         Uutinen eka = new Uutinen();
         //Kirjoittaja haamu = new kirjoittaja(kirjoittaja);  
@@ -77,6 +78,8 @@ public class hallintaController {
         eka.setKirjoittaja(kirjoittaja);
         eka.setKuva(kuva);
         eka.setAika(LocalDateTime.now());
+        Kategoriat kategoria = new Kategoriat();   
+        kategoria.setName(kategori);
         eka.setKategoria(kategoria);
         //eka.setKategoria(new Kategoriat(kategori)); 
        // eka.setKategoria(new Kategoriat(kategori));

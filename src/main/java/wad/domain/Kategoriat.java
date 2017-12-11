@@ -20,7 +20,7 @@ public class Kategoriat extends AbstractPersistable<Long> {
 
     private String identifier;
     private String name;
-    @OneToMany(mappedBy = "kategoria", fetch = FetchType.EAGER)
+    @OneToMany//(mappedBy = " ", fetch = FetchType.EAGER)
     private List<Uutinen> uutiset;
 //     private String ulkomaanuutiset;  
 //     private String politiikka;
@@ -53,12 +53,14 @@ public class Kategoriat extends AbstractPersistable<Long> {
         this.uutiset.add(uutinen);
     }
  
-    public List<Uutinen> getUutislista() {
+    public List<Uutinen> getUutiset() {
         return uutiset;
     }
  
-    public void setUutislista(List<Uutinen> uutiset) {
+    public void setUutiset(List<Uutinen> uutiset) {
         this.uutiset = uutiset;
  
 }
-}
+          
+
+} 

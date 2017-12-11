@@ -25,18 +25,22 @@ public class UutinenService  {
         return uutinenRepository.findAll();
     }
  
-    @Transactional
-    public void add(String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori, Kategoriat kategoria) {
+   @Transactional
+    public void add(String name, String ingres, String sisalto, String kuva, String kirjoittaja, String kategori) {
+       
         Uutinen eka = new Uutinen();
-        eka.setName(name);
         eka.setIngres(ingres);
         eka.setSisalto(sisalto);
         eka.setKuva(kuva);
         eka.setAika(LocalDateTime.now());
         eka.setKirjoittaja(kirjoittaja);
+        Kategoriat kategoria = new Kategoriat();   
+        kategoria.setName(kategori);
+        eka.setKategoria(kategoria);
+        
         //eka.setKirjoittajat(new Kirjoittaja(kirjoittaja));
-        eka.setKategoria(new Kategoriat(kategori));
-        kategoria.getUutislista().add(eka);
+        //eka.setKategoria(new Kategoriat(kategori)); 
+       // kategoria.getUutiset().add(eka);
         kategoriatRepository.save(kategoria);
         uutinenRepository.save(eka);
          
@@ -47,18 +51,14 @@ public class UutinenService  {
         Uutinen uutinen = uutinenRepository.getOne(uutinenId);
         Kategoriat kategoria= kategoriatRepository.getOne(kategoriaId);
  
-        uutinen.getKategoria().setName(kategori);
+        
+        uutinen.setKategoria(kategoria);
         kategoria.getUutiset().add(uutinen);
         
 
 //             kategoriatRepository.save(kategoria);
 //             uutinenRepository.save(uutinen);
     }
- 
-//    public void poistaKAtegoria(Long kategoriaId) {
-//     kategoriatRepository.deleteById(kategoriaId);
-//      }
-    
     
     public Uutinen findById(Long uutinenId) {
         return uutinenRepository.getOne(uutinenId);

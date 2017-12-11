@@ -51,7 +51,7 @@ public class kategoriatController {
 
     }
 
-    @PostMapping("/kategoriat/{kategoriatId}/kategoriat")
+    @PostMapping("/kategoriat/{kategoriatId}")
     public String add(@RequestParam String kategori) {
         Kategoriat kategoria = new Kategoriat();
         kategoria.setName(kategori);

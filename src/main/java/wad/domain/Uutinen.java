@@ -27,8 +27,8 @@ public class Uutinen extends AbstractPersistable<Long> {
    //@OneToMany(fetch=FetchType.EAGER)
    // private List<Kategoriat>kategorialista;//= new ArrayList<>()
     private String ingres;   
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Kirjoittajat> kirjoittajat;
+   // @ManyToMany(fetch = FetchType.EAGER)
+    //private List<Kirjoittajat> kirjoittajat;
     private String sisalto;
     private String kuva;
     private LocalDateTime aika;
