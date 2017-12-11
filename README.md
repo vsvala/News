@@ -12,13 +12,22 @@ Käyttäjä voi klikata ja valita uutisen luettavaksi kokonaan.
 Käyttäjä voi tarkastella uutisia myös kategorian tai luetuimman uutsen mukaan. (voi käyttää esim. user storyjä)
 
 
+Tehdyt ominaisuudet:
+lisää uutisen
+uutisen linkistä pääsee lukemaan kyseisen uutisen kokonaan
+poistaa uutisen(ei vielä kategoriaa)
+lisää kategoriat navigaatioon
+listaa 5 uusinta uutista (nimi, ingressi,kuva)
+listaa muita(mutta ei niinkuin pitäisi)
+
 
 Puuttuvat ominaisuudet ja muut puutteet:
 
-Kuvan tuonti ei vielä toimi.
+Kuvan tuonti ei vielä toimi.	
 Uutisten listaus luettujen perusteella ei toimi
 Uutisten listaus kategorioittain ei toimi
 Testejä ei ole vielä tehty
 Kirjoitutmista ja kirjoittajien lisäystä ei ole vielä hoidettu kuntoon.
+Uutisen poisto toimii, muttei poista vielä kategoriaa
 
 
