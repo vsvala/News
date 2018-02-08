@@ -3,8 +3,10 @@ Web-palvelinohjelmointi, harjoitustyö, syksy 2017  Virva svala
 
 Aiheen kuvaus:
 
-HYVIN KESKENERÄINEN Verkossa toimiva uutissivuston sovellus sekä uutisten luomiseen ja muokkaamiseen tarkoitettu hallintapaneeli. Projeksti on toteutettu kurssin työvälineillä:(Java, Spring, Heroku, Herokun PostreSQL, ..). 
+(KESKENERÄINEN) Verkossa toimiva uutissivuston sovellus sekä uutisten luomiseen ja muokkaamiseen tarkoitettu hallintapaneeli. Projekti on toteutettu kurssin työvälineillä:(Java, Spring, Heroku, Herokun PostreSQL, ..). 
 
+Sovellus löytyy herokusta:
+    http://uutisprojekti.herokuapp.com
 KIRJAUTUMINEN:  käyttis: testi,  salasana: testi 
 
 Listaus tyypillisimmistä (max 5) käyttötapauksista
@@ -29,8 +31,7 @@ Tehdyt ominaisuudet:
 *  uutisen kategorointinappi ei toimi
 
 
-Puuttuvat ominaisuudet ja muut puutteet:  :(  :( :(
-PALJON KESKEN
+Puuttuvat ominaisuudet ja muut puutteet:  :(  
 
 *  Css uupuu
 *   Kuvan tuonti ei vielä toimi.	
